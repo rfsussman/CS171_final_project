@@ -1,0 +1,903 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20231.24.0909.1020                               -->
+<workbook original-version='18.1' source-build='2023.1.17 (20231.24.0909.1020)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='sfpuf2021_1_fall' inline='true' name='federated.0vmf5xa14puupm1eyd3tl1a5b0n2' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='sfpuf2021_1_fall' name='textscan.12yjbqo1imxiuh12quods17tpk1e'>
+            <connection class='textscan' directory='Data/CS171_final_project' filename='sfpuf2021_1_fall.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='rachel_data_cleaned' name='textscan.0puijss0pjh99p10qkscv1319lvu'>
+            <connection class='textscan' directory='Data/CS171_final_project' filename='rachel_data_cleaned.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.0puijss0pjh99p10qkscv1319lvu' name='rachel_data_cleaned.csv' table='[rachel_data_cleaned#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='F1' ordinal='0' />
+            <column datatype='string' name='medicare_reason' ordinal='1' />
+            <column datatype='string' name='age' ordinal='2' />
+            <column datatype='string' name='sex' ordinal='3' />
+            <column datatype='string' name='race' ordinal='4' />
+            <column datatype='string' name='mental_illness' ordinal='5' />
+            <column datatype='integer' name='medicaid' ordinal='6' />
+            <column datatype='integer' name='medicare_advantage' ordinal='7' />
+            <column datatype='integer' name='part_d' ordinal='8' />
+            <column datatype='integer' name='problem_paying_bills' ordinal='9' />
+            <column datatype='integer' name='private_insurance' ordinal='10' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.0puijss0pjh99p10qkscv1319lvu' name='rachel_data_cleaned.csv' table='[rachel_data_cleaned#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='integer' name='F1' ordinal='0' />
+            <column datatype='string' name='medicare_reason' ordinal='1' />
+            <column datatype='string' name='age' ordinal='2' />
+            <column datatype='string' name='sex' ordinal='3' />
+            <column datatype='string' name='race' ordinal='4' />
+            <column datatype='string' name='mental_illness' ordinal='5' />
+            <column datatype='integer' name='medicaid' ordinal='6' />
+            <column datatype='integer' name='medicare_advantage' ordinal='7' />
+            <column datatype='integer' name='part_d' ordinal='8' />
+            <column datatype='integer' name='problem_paying_bills' ordinal='9' />
+            <column datatype='integer' name='private_insurance' ordinal='10' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medicare_reason</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[medicare_reason]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>medicare_reason</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>age</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[age]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>age</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sex</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[sex]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>sex</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>race</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[race]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>race</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mental_illness</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[mental_illness]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>mental_illness</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medicaid</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[medicaid]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>medicaid</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>medicare_advantage</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[medicare_advantage]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>medicare_advantage</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>part_d</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[part_d]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>part_d</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>problem_paying_bills</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[problem_paying_bills]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>problem_paying_bills</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>private_insurance</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[private_insurance]</local-name>
+            <parent-name>[rachel_data_cleaned.csv]</parent-name>
+            <remote-alias>private_insurance</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='# problem paying bills' datatype='integer' name='[% problem paying bills (copy)_1991153993411960839]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [problem_paying_bills]: COUNT([problem_paying_bills])}' />
+      </column>
+      <column datatype='string' name='[:Measure Names]' role='dimension' type='nominal'>
+        <aliases>
+          <alias key='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicaid:qk:4]&quot;' value='Medicaid' />
+          <alias key='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicare_advantage:qk:4]&quot;' value='Medicare Advantage' />
+          <alias key='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:part_d:qk:4]&quot;' value='Part D' />
+          <alias key='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:private_insurance:qk:7]&quot;' value='Private Insurance' />
+          <alias key='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:medicaid:qk]&quot;' value='Has Medicaid' />
+          <alias key='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:medicare_advantage:qk]&quot;' value='Has Medicare Advantage' />
+          <alias key='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:part_d:qk]&quot;' value='Has Part D' />
+          <alias key='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:private_insurance:qk]&quot;' value='Has Private Insurance' />
+        </aliases>
+      </column>
+      <column caption='% medicaid' datatype='real' name='[Calculation_1991153993400233984]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([medicaid])/COUNT([medicaid])' />
+      </column>
+      <column caption='% medicare advantage' datatype='real' name='[Calculation_1991153993400410113]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([medicare_advantage])/COUNT([medicare_advantage])' />
+      </column>
+      <column caption='% part d' datatype='real' name='[Calculation_1991153993400475650]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([part_d])/COUNT([part_d])' />
+      </column>
+      <column caption='% private insurance' datatype='real' name='[Calculation_1991153993400586243]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([private_insurance])/COUNT([private_insurance])' />
+      </column>
+      <column caption='Has Medicaid' datatype='string' name='[Calculation_1991153993406504964]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [medicaid] == 1 THEN &quot;Y&quot; ELSE NULL END' />
+      </column>
+      <column caption='Has Medicare Advantage' datatype='string' name='[Calculation_1991153993406984197]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [medicare_advantage] == 1 THEN &quot;Y&quot; ELSE NULL END' />
+      </column>
+      <column caption='% problem paying bills' datatype='real' name='[Calculation_1991153993411313670]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='{FIXED [problem_paying_bills]: COUNT([problem_paying_bills])}/{FIXED: COUNT([problem_paying_bills])}' />
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='rachel_data_cleaned.csv' datatype='table' name='[__tableau_internal_object_id__].[rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086]' role='measure' type='quantitative' />
+      <column datatype='integer' name='[medicaid]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[medicare_advantage]' role='dimension' type='quantitative' />
+      <column datatype='string' name='[medicare_reason]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[part_d]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[private_insurance]' role='dimension' type='quantitative' />
+      <column datatype='integer' name='[problem_paying_bills]' role='dimension' type='quantitative' />
+      <column-instance column='[problem_paying_bills]' derivation='None' name='[none:problem_paying_bills:ok]' pivot='key' type='ordinal' />
+      <column-instance column='[medicaid]' derivation='Sum' name='[pcto:sum:medicaid:qk:2]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Columns' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicaid]' derivation='Sum' name='[pcto:sum:medicaid:qk:4]' pivot='key' type='quantitative'>
+        <table-calc ordering-field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[medicare_reason]' ordering-type='Field' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicaid]' derivation='Sum' name='[pcto:sum:medicaid:qk:5]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Table' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicaid]' derivation='Sum' name='[pcto:sum:medicaid:qk:6]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='RowInPane' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicaid]' derivation='Sum' name='[pcto:sum:medicaid:qk:7]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Pane' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicaid]' derivation='Sum' name='[pcto:sum:medicaid:qk:8]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='CellInPane' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicaid]' derivation='Sum' name='[pcto:sum:medicaid:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicare_advantage]' derivation='Sum' name='[pcto:sum:medicare_advantage:qk:2]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Columns' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicare_advantage]' derivation='Sum' name='[pcto:sum:medicare_advantage:qk:4]' pivot='key' type='quantitative'>
+        <table-calc ordering-field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[medicare_reason]' ordering-type='Field' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicare_advantage]' derivation='Sum' name='[pcto:sum:medicare_advantage:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[part_d]' derivation='Sum' name='[pcto:sum:part_d:qk:2]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Columns' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[part_d]' derivation='Sum' name='[pcto:sum:part_d:qk:4]' pivot='key' type='quantitative'>
+        <table-calc ordering-field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[medicare_reason]' ordering-type='Field' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[part_d]' derivation='Sum' name='[pcto:sum:part_d:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[private_insurance]' derivation='Sum' name='[pcto:sum:private_insurance:qk:2]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Columns' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[private_insurance]' derivation='Sum' name='[pcto:sum:private_insurance:qk:4]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Pane' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[private_insurance]' derivation='Sum' name='[pcto:sum:private_insurance:qk:5]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='RowInPane' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[private_insurance]' derivation='Sum' name='[pcto:sum:private_insurance:qk:6]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='CellInPane' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[private_insurance]' derivation='Sum' name='[pcto:sum:private_insurance:qk:7]' pivot='key' type='quantitative'>
+        <table-calc ordering-field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[medicare_reason]' ordering-type='Field' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[private_insurance]' derivation='Sum' name='[pcto:sum:private_insurance:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' type='PctTotal' />
+      </column-instance>
+      <column-instance column='[medicaid]' derivation='Sum' name='[sum:medicaid:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[medicare_advantage]' derivation='Sum' name='[sum:medicare_advantage:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[part_d]' derivation='Sum' name='[sum:part_d:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[private_insurance]' derivation='Sum' name='[sum:private_insurance:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1991153993400233984]' derivation='User' name='[usr:Calculation_1991153993400233984:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1991153993400410113]' derivation='User' name='[usr:Calculation_1991153993400410113:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1991153993400475650]' derivation='User' name='[usr:Calculation_1991153993400475650:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_1991153993400586243]' derivation='User' name='[usr:Calculation_1991153993400586243:qk]' pivot='key' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicaid:qk:2]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicaid:qk:4]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicaid:qk:5]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicaid:qk:6]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicaid:qk:7]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicaid:qk:8]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicaid:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:medicaid:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400233984:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:private_insurance:qk:2]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:private_insurance:qk:4]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:private_insurance:qk:5]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:private_insurance:qk:6]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:private_insurance:qk:7]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:private_insurance:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:private_insurance:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400410113:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:part_d:qk:2]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:part_d:qk:4]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:part_d:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:part_d:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400475650:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicare_advantage:qk:2]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicare_advantage:qk:4]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[pcto:sum:medicare_advantage:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:medicare_advantage:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400586243:qk]&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[none:problem_paying_bills:ok]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>0</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>1</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <field-sort-info field-sort-order-type='custom-order'>
+        <field-sort-custom-order field='F1' />
+        <field-sort-custom-order field='medicare_reason' />
+        <field-sort-custom-order field='age' />
+        <field-sort-custom-order field='sex' />
+        <field-sort-custom-order field='race' />
+        <field-sort-custom-order field='mental_illness' />
+        <field-sort-custom-order field='medicaid' />
+        <field-sort-custom-order field='Calculation_1991153993406504964' />
+        <field-sort-custom-order field='Calculation_1991153993400233984' />
+        <field-sort-custom-order field='medicare_advantage' />
+        <field-sort-custom-order field='Calculation_1991153993406984197' />
+        <field-sort-custom-order field='Calculation_1991153993400410113' />
+        <field-sort-custom-order field='part_d' />
+        <field-sort-custom-order field='Calculation_1991153993400475650' />
+        <field-sort-custom-order field='problem_paying_bills' />
+        <field-sort-custom-order field='Calculation_1991153993411313670' />
+        <field-sort-custom-order field='% problem paying bills (copy)_1991153993411960839' />
+        <field-sort-custom-order field='private_insurance' />
+        <field-sort-custom-order field='Calculation_1991153993400586243' />
+        <field-sort-custom-order field='Geometry (generated)' />
+        <field-sort-custom-order field='Latitude (generated)' />
+        <field-sort-custom-order field='Longitude (generated)' />
+        <field-sort-custom-order field=':Measure Names' />
+        <field-sort-custom-order field='Multiple Values' />
+      </field-sort-info>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='rachel_data_cleaned.csv' id='rachel_data_cleaned.csv_58D775F26E0F424A8BDDBCCA03194086'>
+            <properties context=''>
+              <relation connection='textscan.0puijss0pjh99p10qkscv1319lvu' name='rachel_data_cleaned.csv' table='[rachel_data_cleaned#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='F1' ordinal='0' />
+                  <column datatype='string' name='medicare_reason' ordinal='1' />
+                  <column datatype='string' name='age' ordinal='2' />
+                  <column datatype='string' name='sex' ordinal='3' />
+                  <column datatype='string' name='race' ordinal='4' />
+                  <column datatype='string' name='mental_illness' ordinal='5' />
+                  <column datatype='integer' name='medicaid' ordinal='6' />
+                  <column datatype='integer' name='medicare_advantage' ordinal='7' />
+                  <column datatype='integer' name='part_d' ordinal='8' />
+                  <column datatype='integer' name='problem_paying_bills' ordinal='9' />
+                  <column datatype='integer' name='private_insurance' ordinal='10' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='vis1'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>*in the final version, the user can swap medicare_reason for any demographic variable (medicare_reason, age, sex, race, mental_illness) and the user can choose which bars they want to display (medicaid, medicare_advantage, part_d, and/or private_insurance)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='sfpuf2021_1_fall' name='federated.0vmf5xa14puupm1eyd3tl1a5b0n2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0vmf5xa14puupm1eyd3tl1a5b0n2'>
+            <column caption='% medicaid' datatype='real' name='[Calculation_1991153993400233984]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([medicaid])/COUNT([medicaid])' />
+            </column>
+            <column caption='% medicare advantage' datatype='real' name='[Calculation_1991153993400410113]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([medicare_advantage])/COUNT([medicare_advantage])' />
+            </column>
+            <column caption='% part d' datatype='real' name='[Calculation_1991153993400475650]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([part_d])/COUNT([part_d])' />
+            </column>
+            <column caption='% private insurance' datatype='real' name='[Calculation_1991153993400586243]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([private_insurance])/COUNT([private_insurance])' />
+            </column>
+            <column datatype='integer' name='[medicaid]' role='dimension' type='quantitative' />
+            <column datatype='integer' name='[medicare_advantage]' role='dimension' type='quantitative' />
+            <column datatype='string' name='[medicare_reason]' role='dimension' type='nominal' />
+            <column-instance column='[medicare_reason]' derivation='None' name='[none:medicare_reason:nk]' pivot='key' type='nominal' />
+            <column datatype='integer' name='[part_d]' role='dimension' type='quantitative' />
+            <column datatype='integer' name='[private_insurance]' role='dimension' type='quantitative' />
+            <column-instance column='[Calculation_1991153993400233984]' derivation='User' name='[usr:Calculation_1991153993400233984:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1991153993400410113]' derivation='User' name='[usr:Calculation_1991153993400410113:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1991153993400475650]' derivation='User' name='[usr:Calculation_1991153993400475650:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1991153993400586243]' derivation='User' name='[usr:Calculation_1991153993400586243:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400233984:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400410113:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400475650:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400586243:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:medicare_reason:nk]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:medicare_reason:nk]' />
+              <groupfilter function='member' level='[none:medicare_reason:nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[Multiple Values]' scope='rows' value='Percent of Beneficiaries' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400410113:qk]' value='p0.0%' />
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400233984:qk]' value='p0.0%' />
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400475650:qk]' value='p0.0%' />
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400586243:qk]' value='p0.0%' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[Multiple Values]' value='p0%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#000000' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[Multiple Values]</rows>
+        <cols>([federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:medicare_reason:nk] / [federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[:Measure Names])</cols>
+      </table>
+      <simple-id uuid='{CA5FF67E-90A9-477B-90B4-D066EC741094}' />
+    </worksheet>
+    <worksheet name='vis2'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>*in the final version, there will be one bar graph per demographic variable (medicare_reason, age, sex, race, mental_illness) and the user can select the bars on this bar graph to filter the view of the pie charts (next sheet)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='sfpuf2021_1_fall' name='federated.0vmf5xa14puupm1eyd3tl1a5b0n2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0vmf5xa14puupm1eyd3tl1a5b0n2'>
+            <column caption='% medicaid' datatype='real' name='[Calculation_1991153993400233984]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([medicaid])/COUNT([medicaid])' />
+            </column>
+            <column caption='% medicare advantage' datatype='real' name='[Calculation_1991153993400410113]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([medicare_advantage])/COUNT([medicare_advantage])' />
+            </column>
+            <column caption='% part d' datatype='real' name='[Calculation_1991153993400475650]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([part_d])/COUNT([part_d])' />
+            </column>
+            <column caption='% private insurance' datatype='real' name='[Calculation_1991153993400586243]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([private_insurance])/COUNT([private_insurance])' />
+            </column>
+            <column-instance column='[medicare_reason]' derivation='Count' name='[cnt:medicare_reason:qk]' pivot='key' type='quantitative' />
+            <column datatype='integer' name='[medicaid]' role='dimension' type='quantitative' />
+            <column datatype='integer' name='[medicare_advantage]' role='dimension' type='quantitative' />
+            <column datatype='string' name='[medicare_reason]' role='dimension' type='nominal' />
+            <column-instance column='[medicare_reason]' derivation='None' name='[none:medicare_reason:nk]' pivot='key' type='nominal' />
+            <column datatype='integer' name='[part_d]' role='dimension' type='quantitative' />
+            <column datatype='integer' name='[private_insurance]' role='dimension' type='quantitative' />
+            <column-instance column='[Calculation_1991153993400233984]' derivation='User' name='[usr:Calculation_1991153993400233984:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1991153993400410113]' derivation='User' name='[usr:Calculation_1991153993400410113:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1991153993400475650]' derivation='User' name='[usr:Calculation_1991153993400475650:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1991153993400586243]' derivation='User' name='[usr:Calculation_1991153993400586243:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400233984:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400410113:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400475650:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400586243:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:medicare_reason:nk]' kind='hide'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:medicare_reason:nk]' />
+              <groupfilter function='member' level='[none:medicare_reason:nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400410113:qk]' value='p0.0%' />
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400233984:qk]' value='p0.0%' />
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400475650:qk]' value='p0.0%' />
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[usr:Calculation_1991153993400586243:qk]' value='p0.0%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#000000' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[cnt:medicare_reason:qk]</rows>
+        <cols>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:medicare_reason:nk]</cols>
+      </table>
+      <simple-id uuid='{0EC9A608-3882-4748-8095-941587C84CFD}' />
+    </worksheet>
+    <worksheet name='vis3'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>*in the final version, the user can click on the filters to the left (they will be buttons) to filter the sample they&apos;re looking at. alongside this total, there will also be different pies for those with medicaid, medicare_advantage, part_d, and private_insurance (same concept, just filtering to those with each of these kinds of insurance)</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='sfpuf2021_1_fall' name='federated.0vmf5xa14puupm1eyd3tl1a5b0n2' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0vmf5xa14puupm1eyd3tl1a5b0n2'>
+            <column caption='# problem paying bills' datatype='integer' name='[% problem paying bills (copy)_1991153993411960839]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [problem_paying_bills]: COUNT([problem_paying_bills])}' />
+            </column>
+            <column caption='% problem paying bills' datatype='real' name='[Calculation_1991153993411313670]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='{FIXED [problem_paying_bills]: COUNT([problem_paying_bills])}/{FIXED: COUNT([problem_paying_bills])}' />
+            </column>
+            <column datatype='string' name='[age]' role='dimension' type='nominal' />
+            <column-instance column='[problem_paying_bills]' derivation='Count' name='[cnt:problem_paying_bills:qk]' pivot='key' type='quantitative' />
+            <column datatype='string' name='[medicare_reason]' role='dimension' type='nominal' />
+            <column datatype='string' name='[mental_illness]' role='dimension' type='nominal' />
+            <column-instance column='[age]' derivation='None' name='[none:age:nk]' pivot='key' type='nominal' />
+            <column-instance column='[medicare_reason]' derivation='None' name='[none:medicare_reason:nk]' pivot='key' type='nominal' />
+            <column-instance column='[mental_illness]' derivation='None' name='[none:mental_illness:nk]' pivot='key' type='nominal' />
+            <column-instance column='[problem_paying_bills]' derivation='None' name='[none:problem_paying_bills:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[race]' derivation='None' name='[none:race:nk]' pivot='key' type='nominal' />
+            <column-instance column='[sex]' derivation='None' name='[none:sex:nk]' pivot='key' type='nominal' />
+            <column datatype='integer' name='[problem_paying_bills]' role='dimension' type='quantitative' />
+            <column datatype='string' name='[race]' role='dimension' type='nominal' />
+            <column datatype='string' name='[sex]' role='dimension' type='nominal' />
+            <column-instance column='[% problem paying bills (copy)_1991153993411960839]' derivation='Sum' name='[sum:% problem paying bills (copy)_1991153993411960839:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_1991153993411313670]' derivation='Sum' name='[sum:Calculation_1991153993411313670:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:age:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:age:nk]' member='&quot;&lt;65&quot;' />
+              <groupfilter function='member' level='[none:age:nk]' member='&quot;65-74&quot;' />
+              <groupfilter function='member' level='[none:age:nk]' member='&quot;75+&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:medicare_reason:nk]'>
+            <groupfilter function='level-members' level='[none:medicare_reason:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:mental_illness:nk]'>
+            <groupfilter function='level-members' level='[none:mental_illness:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:problem_paying_bills:ok]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:problem_paying_bills:ok]' member='0' />
+              <groupfilter function='member' level='[none:problem_paying_bills:ok]' member='1' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:race:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:race:nk]' member='&quot;Hispanic&quot;' />
+              <groupfilter function='member' level='[none:race:nk]' member='&quot;Non-Hispanic Black&quot;' />
+              <groupfilter function='member' level='[none:race:nk]' member='&quot;Non-Hispanic White&quot;' />
+              <groupfilter function='member' level='[none:race:nk]' member='&quot;Other&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:sex:nk]'>
+            <groupfilter function='union' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate'>
+              <groupfilter function='member' level='[none:sex:nk]' member='&quot;Female&quot;' />
+              <groupfilter function='member' level='[none:sex:nk]' member='&quot;Male&quot;' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:medicare_reason:nk]</column>
+            <column>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:age:nk]</column>
+            <column>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:sex:nk]</column>
+            <column>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:race:nk]</column>
+            <column>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:mental_illness:nk]</column>
+            <column>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:problem_paying_bills:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:Calculation_1991153993411313670:qk]' value='p0.00%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Pie' />
+            <encodings>
+              <color column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:problem_paying_bills:ok]' />
+              <wedge-size column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[cnt:problem_paying_bills:qk]' />
+              <size column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[cnt:problem_paying_bills:qk]' />
+              <text column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:Calculation_1991153993411313670:qk]' />
+              <text column='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:% problem paying bills (copy)_1991153993411960839:qk]' />
+            </encodings>
+            <customized-tooltip>
+              <formatted-text>
+                <run fontcolor='#787878'>problem_paying_bills:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:problem_paying_bills:ok]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'># problem paying bills:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:% problem paying bills (copy)_1991153993411960839:qk]>]]></run>
+                <run>Æ&#10;</run>
+                <run fontcolor='#787878'>% problem paying bills:&#9;</run>
+                <run bold='true'><![CDATA[<[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:Calculation_1991153993411313670:qk]>]]></run>
+              </formatted-text>
+            </customized-tooltip>
+            <customized-label>
+              <formatted-text>
+                <run>&lt;</run>
+                <run>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:Calculation_1991153993411313670:qk]</run>
+                <run>&gt;&#10;(n=&lt;</run>
+                <run>[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[sum:% problem paying bills (copy)_1991153993411960839:qk]</run>
+                <run>&gt;)</run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#000000' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{F3D3912F-4D77-4995-9F7E-6D785D41A9B1}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='vis1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+            <card type='measures' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='fit-width' />
+      </viewpoint>
+      <simple-id uuid='{CAF9BEB3-E5DF-4604-8382-EAE7643FD75A}' />
+    </window>
+    <window class='worksheet' name='vis2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='fit-width' />
+      </viewpoint>
+      <simple-id uuid='{936394EF-8F51-47AC-88BD-2EE43F559718}' />
+    </window>
+    <window class='worksheet' maximized='true' name='vis3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:mental_illness:nk]' type='filter' />
+            <card param='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:race:nk]' type='filter' />
+            <card param='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:sex:nk]' type='filter' />
+            <card param='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:age:nk]' type='filter' />
+            <card param='[federated.0vmf5xa14puupm1eyd3tl1a5b0n2].[none:medicare_reason:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{A0B1921E-D1A6-4997-8F81-5641445F7C2F}' />
+    </window>
+  </windows>
+</workbook>
