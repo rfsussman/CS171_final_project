@@ -14,11 +14,78 @@
 </head>
 <body>
 
-<div>
+<div class="container-fluid" style="height: 100vh; padding-top: 1vh">
+
     <h1> Title </h1>
 
     <h2> How does supplemental insurance coverage compare across demographics? </h2>
-    <div id = "bar_graph_div"> </div>
+    <div class = "row">
+        <div class = "col-sm-2 align-self-center" id = "demographic_buttons">
+            <div class = "row ">
+                <div class = "row">
+                    <div> Click on one category ... </div>
+                </div>
+                <div class = "row">
+                    <button class = "button demographic_button" id = "medicare_reason"  onclick="click_demographic_button(this)">
+                        Eligibility Reason
+                    </button>
+                </div>
+                <div class = "row">
+                    <button class = "button demographic_button" id = "age" onclick="click_demographic_button(this)">
+                       Age
+                    </button>
+                </div>
+                <div class = "row">
+                    <button class = "button demographic_button" id = "sex" onclick="click_demographic_button(this)">
+                        Sex
+                    </button>
+                </div>
+                <div class = "row">
+                    <button class = "button demographic_button" id = "race" onclick="click_demographic_button(this)">
+                        Race
+                    </button>
+                </div>
+                <div class = "row">
+                    <button class = "button demographic_button" id = "mental_illness" onclick="click_demographic_button(this)">
+                        Mental Illness
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class = "col-sm-2 align-self-center" id = "bar_buttons">
+            <div class = "row">
+                <div class = "row">
+                    <div> ... and many bars as you'd like. </div>
+                </div>
+                <div class = "row">
+                    <button class = "button bar_button active" id = "medicaid" onclick="click_bar_button(this)">
+                        Medicaid
+                    </button>
+                </div>
+                <div class = "row">
+                    <button class = "button bar_button active" id = "medicare_advantage" onclick="click_bar_button(this)">
+                        Medicare Advantage
+                    </button>
+                </div>
+                <div class = "row">
+                    <button class = "button bar_button active" id = "part_d" onclick="click_bar_button(this)">
+                    Part D
+                </button>
+                </div>
+                <div class = "row">
+                    <button class = "button bar_button active" id = "private_insurance" onclick="click_bar_button(this)">
+                        Private
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class = "col-sm-8">
+            <div class = "row">
+                <div id = "bar_graph_div"> </div>
+            </div>
+        </div>
+    </div>
+
     <h2> How does supplemental insurance coverage relate to problems paying bills? </h2>
     <div> demographic bar charts here (linked to pie charts) </div>
     <div> pie charts here </div>

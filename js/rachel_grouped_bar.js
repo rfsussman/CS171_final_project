@@ -6,6 +6,9 @@ class Rachel_Grouped_Bar {
         this.subgroups = ["medicaid", "medicare_advantage", "part_d", "private_insurance"]
         this.colors = ["#3C1742","#476A6F","#7D4600", "#C97B84"]
 
+        // define initial graph state
+        this.initial_demographic = ["medicare_reason"]
+
         // call initVis()
         this.initVis()
     }
@@ -24,14 +27,7 @@ class Rachel_Grouped_Bar {
         // define graph and legend SVGs
         this.graph_svg = this.full_svg
             .append("svg")
-            .attr("width", this.graph_width)
-            .attr("height", this.height + this.margin.top + this.margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
-
-        this.legend_svg = this.full_svg
-            .append("svg")
-            .attr("width", this.legend_width)
+            .attr("width", this.width)
             .attr("height", this.height + this.margin.top + this.margin.bottom)
             .append("g")
             .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
@@ -41,72 +37,75 @@ class Rachel_Grouped_Bar {
             .domain(this.subgroups)
             .range(this.colors)
 
-        // initialize legend
-        this.legend = this.legend_svg
-            .append("g")
-            .attr('class', 'legend')
-
-        // draw legend
-        this.legend
-            .selectAll("rect")
-            .data(this.colors)
-            .enter()
-            .append("rect")
-            .attr("x", 0)
-            .attr("y", function(d, i) { return 35*i + 40; })
-            .attr("width", 30)
-            .attr("height", 30)
-            .attr("fill", d => d)
-            .attr("stroke", "black");
-
-        // label legend colors
-        this.legend.selectAll("text")
-            .data(["Medicaid", "Medicare Advantage", "Part D", "Private Insurance"])
-            .enter()
+        // initialize graph title
+        this.graph_title = this.graph_svg
             .append("text")
-            .text(d => d)
-            .attr("x", 32)
-            .attr("y", function(d, i) { return 35*i + 60; })
+            .attr("text-anchor", "middle")
+            .attr("x", this.graph_width/2)
+            .attr("y", 0)
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "20px")
+            .attr("fill", "black")
+            .text("")
+
+        // initialize and generate x axis
+        this.x = d3.scaleBand()
+            .range([0, this.graph_width - this.margin.left - this.margin.right])
+            .padding([0.2])
+
+        this.x_subgroups = d3.scaleBand()
+            .domain(this.subgroups)
+            .padding([0.1])
+
+        this.x_axis = this.graph_svg.append("g")
+            .attr("transform", "translate(0," + this.height + ")")
+
+        // initialize and generate y axis
+        this.y = d3.scaleLinear()
+            .domain([0, 100])
+            .range([this.height, 0])
+
+        this.y_axis = this.graph_svg.append("g")
+
+        // initialize y axis text
+        this.graph_svg.append("text")
+            .attr("class", "y label")
+            .attr("text-anchor", "middle")
+            .attr("y", -30)
+            .attr("x", -this.height/2)
+            .attr("transform", "rotate(-90)")
+            .text("% of Beneficiaries")
             .attr("font-family", "sans-serif")
             .attr("font-size", "15px")
             .attr("fill", "black");
 
-        // title legend
-        this.legend.append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("y", -10)
-            .attr("x", -29)
-            .attr("text-anchor", "end")
-            .attr("fill", "black")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", "15px")
-            .text("Supplemental Insurance");
-
         // call wrangleData()
-        this.wrangleData()
+        this.wrangleData(this.initial_demographic)
     }
 
-    wrangleData() {
+    wrangleData(selected_category) {
+        this.selected_category = selected_category[0]
+
         // set for now; this will update with a button eventually
-        this.selected_category = "medicare_reason"
         if (this.selected_category == "medicare_reason") {
-            this.selected_title = "Medicare Reason"
+            this.selected_title = "Eligibility Reason"
+            this.groups = ["Aged", "Disabled", "Unknown"]
         } else if (this.selected_category == "age") {
             this.selected_title = "Age"
+            this.groups = ["<65", "65-74", "75+"]
         } else if (this.selected_category == "sex") {
             this.selected_title = "Sex"
+            this.groups = ["Female", "Male"]
         } else if (this.selected_category == "race") {
             this.selected_title = "Race"
+            this.groups = ["Non-Hispanic Black", "Non-Hispanic White", "Hispanic", "Other"]
         } if (this.selected_category == "mental_illness") {
-            this.selected_title = "Mental Illness"
+            this.selected_title = "Mental Illness Status"
+            this.groups = ["Yes", "No", "Unknown"]
         }
 
-
-            // group data by selected category
+        // group data by selected category
         this.grouped_data = d3.group(this.original_data, d => d[this.selected_category])
-
-        // extract group names
-        this.groups = Array.from(this.grouped_data.keys());
 
         // initialize storage for summed data
         this.compiled_data = {};
@@ -147,66 +146,83 @@ class Rachel_Grouped_Bar {
             }));
         }).flat();
 
+        // call filterBars()
+        this.filterBars(this.subgroups);
+    }
+
+    filterBars(filter_bars) {
+        this.subgroups = filter_bars;
+        this.filtered_data_for_graph = this.data_for_graph.filter(({subgroup}) => this.subgroups.includes(subgroup))
+
         // call updateVis()
         this.updateVis()
     }
 
     updateVis() {
-
-        // initialize and generate x axis (overall groups and subgroups)
-        this.x = d3.scaleBand()
+        // call axes
+        this.x
             .domain(this.groups)
-            .range([0, this.graph_width - this.margin.left - this.margin.right])
-            .padding([0.2])
 
-        this.x_subgroups = d3.scaleBand()
-            .domain(this.subgroups)
+        this.x_subgroups
             .range([0, this.x.bandwidth()])
-            .padding([0.1])
 
-        this.graph_svg.append("g")
-            .attr("transform", "translate(0," + this.height + ")")
+        this.x_axis
             .call(d3.axisBottom(this.x))
             .selectAll("text")
             .attr("font-size", "15px");
 
-        // initialize and generate y axis
-        this.y = d3.scaleLinear()
-            .domain([0, 100])
-            .range([this.height, 0])
-
-        this.graph_svg.append("g")
+        this.y_axis
             .call(d3.axisLeft(this.y))
             .selectAll("text")
-            .attr("font-size", "12px");
+            .attr("font-size", "12px")
 
-        this.graph_svg.append("text")
-            .attr("class", "y label")
-            .attr("text-anchor", "middle")
-            .attr("y", -30)
-            .attr("x", -this.height/2)
-            .attr("transform", "rotate(-90)")
-            .text("% of Beneficiaries")
-            .attr("font-family", "sans-serif")
-            .attr("font-size", "15px")
-            .attr("fill", "black");
+        // make graph title
+        this.graph_title
+            .text("% of Beneficiaries by " + this.selected_title)
 
-        // initialize bars (considering group and subgroup)
-        this.bars = this.graph_svg.append("g")
-            .selectAll("g")
-            .data(this.data_for_graph)
-            .join("g")
-            .attr("transform", d => `translate(${this.x(d.group)}, 0)`)
-            .selectAll("rect")
-            .data(d => this.subgroups.map(category => ({key: category, value: this.compiled_data[d.group][`${category}_pct`]})));
+        // make bar graph groups
+        const groups = this.graph_svg
+            .selectAll(".group")
+            .data(this.filtered_data_for_graph, d => d.group);
 
-        // call bars
-        this.bars
+        // remove old groups
+        groups.exit().remove();
+
+        // enter groups
+        const enter_groups = groups
             .enter()
+            .append("g")
+            .attr("class", "group")
+            .attr("transform", d => `translate(${this.x(d.group)}, 0)`);
+
+        // merge groups
+        const merge_groups = enter_groups
+            .merge(groups);
+
+        // initialize bars on top of the new groups
+        const bars = merge_groups
+            .selectAll("rect")
+            .data(d => this.subgroups.map(category => ({
+                key: category,
+                value: this.compiled_data[d.group][`${category}_pct`]
+            })), d => d.key);
+
+        // remove old bars
+        bars
+            .exit()
+            .remove();
+
+        // enter new bars
+        bars.enter()
             .append("rect")
             .attr("class", "bar")
-            .merge(this.bars)
+            .attr("x", d => this.x_subgroups(d.key))
+            .attr("y", this.height)
+            .attr("width", this.x_subgroups.bandwidth())
+            .attr("height", 0)
+            .merge(bars)
             .transition()
+            .duration(1000)
             .attr("x", d => this.x_subgroups(d.key))
             .attr("y", d => this.y(d.value))
             .attr("width", this.x_subgroups.bandwidth())
@@ -214,41 +230,91 @@ class Rachel_Grouped_Bar {
             .attr("fill", d => this.color_scale(d.key))
             .attr("stroke", "black");
 
-        // initialize numeric labels (considering group and subgroup)
-        this.num_labels = this.graph_svg.append("g")
-            .selectAll("g")
-            .data(this.data_for_graph)
-            .join("g")
-            .attr("transform", d => `translate(${this.x(d.group)}, 0)`)
+        // initialize labels on top of the new groups
+        const labels = merge_groups
             .selectAll("text")
-            .data(d => this.subgroups.map(category => (
-                {key: category, value: this.compiled_data[d.group][`${category}_pct`], num_value: this.compiled_data[d.group][`${category}_num`]})));
+            .data(d => this.subgroups.map(category => ({
+                key: category,
+                value: this.compiled_data[d.group][`${category}_pct`],
+                num_value: this.compiled_data[d.group][`${category}_num`]
+            })), d => d.key);
 
-        // call numeric labels
-        this.num_labels
-            .enter()
+        // remove old labels
+        labels
+            .exit()
+            .remove();
+
+        // enter new labels
+        labels.enter()
             .append("text")
             .attr("class", "label")
-            .merge(this.num_labels)
-            .transition()
+            .merge(labels)
             .attr("x", d => this.x_subgroups(d.key) + this.x_subgroups.bandwidth()/2)
-            .attr("text-anchor", "middle")
+            .attr("y", this.height)
+            .transition()
+            .duration(1000)
+            .attr("x", d => this.x_subgroups(d.key) + this.x_subgroups.bandwidth()/2)
             .attr("y", d => this.y(d.value) - 5)
             .attr("fill", "black")
             .attr("font-size", "10px")
+            .attr("text-anchor", "middle")
             .text(function(d) {
                 return "(n=" + d.num_value + ")";
             });
 
-        // make graph title
-        this.graph_svg.append("text")
-            .attr("text-anchor", "middle")
-            .attr("x", this.graph_width/2)
-            .attr("y", 0)
-            .text("% of Beneficiaries by " + this.selected_title)
-            .attr("font-family", "sans-serif")
-            .attr("font-size", "20px")
-            .attr("fill", "black");
-
     }
 }
+
+/*
+extract group names
+this.groups = Array.from(this.grouped_data.keys());
+
+
+this.legend_svg = this.full_svg
+    .append("svg")
+    .attr("width", this.legend_width)
+    .attr("height", this.height + this.margin.top + this.margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+
+// initialize legend
+this.legend = this.legend_svg
+    .append("g")
+    .attr('class', 'legend')
+
+// draw legend
+this.legend
+    .selectAll("rect")
+    .data(this.colors)
+    .enter()
+    .append("rect")
+    .attr("x", 0)
+    .attr("y", function(d, i) { return 35*i + 40; })
+    .attr("width", 30)
+    .attr("height", 30)
+    .attr("fill", d => d)
+    .attr("stroke", "black");
+
+// label legend colors
+this.legend.selectAll("text")
+    .data(["Medicaid", "Medicare Advantage", "Part D", "Private Insurance"])
+    .enter()
+    .append("text")
+    .text(d => d)
+    .attr("x", 32)
+    .attr("y", function(d, i) { return 35*i + 60; })
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "15px")
+    .attr("fill", "black");
+
+// title legend
+this.legend.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -10)
+    .attr("x", -29)
+    .attr("text-anchor", "end")
+    .attr("fill", "black")
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "15px")
+    .text("Supplemental Insurance");
+*/
