@@ -1,31 +1,24 @@
 class Rachel_Grouped_Bar {
-    constructor(parent_element, bar_graph_data) {
+    constructor(parent_element, bar_graph_data, buttons) {
         // define variables
         this.parent_element = parent_element;
         this.original_data = bar_graph_data;
-        this.subgroups = ["medicaid", "medicare_advantage", "part_d", "private_insurance"]
         this.colors = ["#3C1742","#476A6F","#7D4600", "#C97B84"]
-
-        // define initial graph state
-        this.initial_demographic = ["medicare_reason"]
+        this.buttons = buttons
 
         // call initVis()
         this.initVis()
     }
 
     initVis() {
-        // set up full SVG and related parameters
-        this.full_svg = d3.select("#" + this.parent_element)
-            .style("display", "flex");
 
-        this.margin = {top: 30, right: 30, bottom: 30, left: 60},
-            this.width = 1200,
-            this.graph_width = (3/4)*this.width,
-            this.legend_width = (1/4)*this.width,
-            this.height = 400 - this.margin.top - this.margin.bottom;
+        // initialize svg
+        this.margin = {top: 100, right: 30, bottom: 100, left: 60},
+            this.width = document.getElementById(this.parent_element).getBoundingClientRect().width - this.margin.left - this.margin.right,
+            this.height =  document.getElementById(this.parent_element).getBoundingClientRect().width*0.5 - this.margin.top - this.margin.bottom
 
-        // define graph and legend SVGs
-        this.graph_svg = this.full_svg
+        this.svg = d3.select("#" + this.parent_element)
+            .style("display", "flex")
             .append("svg")
             .attr("width", this.width)
             .attr("height", this.height + this.margin.top + this.margin.bottom)
@@ -34,14 +27,14 @@ class Rachel_Grouped_Bar {
 
         // initialize color scale
         this.color_scale = d3.scaleOrdinal()
-            .domain(this.subgroups)
+            .domain(this.buttons.bar_buttons)
             .range(this.colors)
 
         // initialize graph title
-        this.graph_title = this.graph_svg
+        this.graph_title = this.svg
             .append("text")
             .attr("text-anchor", "middle")
-            .attr("x", this.graph_width/2)
+            .attr("x", this.width/2)
             .attr("y", 0)
             .attr("font-family", "sans-serif")
             .attr("font-size", "20px")
@@ -50,14 +43,14 @@ class Rachel_Grouped_Bar {
 
         // initialize and generate x axis
         this.x = d3.scaleBand()
-            .range([0, this.graph_width - this.margin.left - this.margin.right])
+            .range([0, this.width - this.margin.left - this.margin.right])
             .padding([0.2])
 
         this.x_subgroups = d3.scaleBand()
-            .domain(this.subgroups)
+            .domain(this.buttons.bar_buttons)
             .padding([0.1])
 
-        this.x_axis = this.graph_svg.append("g")
+        this.x_axis = this.svg.append("g")
             .attr("transform", "translate(0," + this.height + ")")
 
         // initialize and generate y axis
@@ -65,10 +58,10 @@ class Rachel_Grouped_Bar {
             .domain([0, 100])
             .range([this.height, 0])
 
-        this.y_axis = this.graph_svg.append("g")
+        this.y_axis = this.svg.append("g")
 
         // initialize y axis text
-        this.graph_svg.append("text")
+        this.svg.append("text")
             .attr("class", "y label")
             .attr("text-anchor", "middle")
             .attr("y", -30)
@@ -80,11 +73,15 @@ class Rachel_Grouped_Bar {
             .attr("fill", "black");
 
         // call wrangleData()
-        this.wrangleData(this.initial_demographic)
+        this.wrangleData(this.buttons)
     }
 
-    wrangleData(selected_category) {
-        this.selected_category = selected_category[0]
+    wrangleData(buttons) {
+        // console.log(buttons)
+        this.selected_category = buttons.demographic_button[0]
+        this.subgroups = buttons.bar_buttons
+        // console.log(this.selected_category)
+        // console.log(this.subgroups)
 
         // set for now; this will update with a button eventually
         if (this.selected_category == "medicare_reason") {
@@ -181,7 +178,7 @@ class Rachel_Grouped_Bar {
             .text("% of Beneficiaries by " + this.selected_title)
 
         // make bar graph groups
-        const groups = this.graph_svg
+        const groups = this.svg
             .selectAll(".group")
             .data(this.filtered_data_for_graph, d => d.group);
 
@@ -230,9 +227,9 @@ class Rachel_Grouped_Bar {
             .attr("fill", d => this.color_scale(d.key))
             .attr("stroke", "black");
 
-        // initialize labels on top of the new groups
-        const labels = merge_groups
-            .selectAll("text")
+        // initialize n labels on top of the new groups
+        const n_labels = merge_groups
+            .selectAll(".n_label")
             .data(d => this.subgroups.map(category => ({
                 key: category,
                 value: this.compiled_data[d.group][`${category}_pct`],
@@ -240,15 +237,15 @@ class Rachel_Grouped_Bar {
             })), d => d.key);
 
         // remove old labels
-        labels
+        n_labels
             .exit()
             .remove();
 
         // enter new labels
-        labels.enter()
+        n_labels.enter()
             .append("text")
-            .attr("class", "label")
-            .merge(labels)
+            .attr("class", "n_label")
+            .merge(n_labels)
             .attr("x", d => this.x_subgroups(d.key) + this.x_subgroups.bandwidth()/2)
             .attr("y", this.height)
             .transition()
@@ -260,6 +257,36 @@ class Rachel_Grouped_Bar {
             .attr("text-anchor", "middle")
             .text(function(d) {
                 return "(n=" + d.num_value + ")";
+            });
+
+        // initialize pct labels on top of the new groups
+        const pct_labels = merge_groups
+            .selectAll(".pct_label")
+            .data(d => this.subgroups.map(category => ({
+                key: category,
+                value: this.compiled_data[d.group][`${category}_pct`]})), d => d.key);
+
+        // remove old labels
+        pct_labels
+            .exit()
+            .remove();
+
+        // enter new labels
+        pct_labels.enter()
+            .append("text")
+            .attr("class", "pct_label")
+            .merge(pct_labels)
+            .attr("x", d => this.x_subgroups(d.key) + this.x_subgroups.bandwidth()/2)
+            .attr("y", this.height)
+            .transition()
+            .duration(1000)
+            .attr("x", d => this.x_subgroups(d.key) + this.x_subgroups.bandwidth()/2)
+            .attr("y", d => this.y(d.value) - 20)
+            .attr("fill", "black")
+            .attr("font-size", "10px")
+            .attr("text-anchor", "middle")
+            .text(function(d) {
+                return d.value + "%";
             });
 
     }

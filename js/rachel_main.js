@@ -1,16 +1,6 @@
 // init global variables & switches
-let bar_graph,
-    medicaid_pie_chart,
-    medicare_advantage_pie_chart,
-    part_d_pie_chart,
-    private_insurance_pie_chart,
-    total_pie_chart;
-
-let selected_reason_pie = [];
-let selected_age_pie = [];
-let selected_sex_pie = [];
-let selected_race_pie = [];
-let selected_mental_illness_pie = [];
+let bar_graph;
+let buttons = { demographic_button: ["medicare_reason"], bar_buttons:["medicaid", "medicare_advantage", "part_d", "private_insurance"]};
 
 // load data using promises
 let promises = [
@@ -19,7 +9,7 @@ let promises = [
 
 Promise.all(promises)
     .then(function (data) {
-        console.log("data/rachel_data_cleaned loaded")
+        // console.log("data/rachel_data_cleaned loaded")
         initialize_graphs(data)
     })
     .catch(function (err) {
@@ -28,8 +18,7 @@ Promise.all(promises)
 
 // initialize graphs
 function initialize_graphs(data) {
-    bar_graph = new Rachel_Grouped_Bar("bar_graph_div", data[0]);
-    bar_graph.wrangleData(["medicare_reason"])
+    bar_graph = new Rachel_Grouped_Bar("bar_graph_div", data[0], buttons);
 }
 
 // button styling
@@ -48,12 +37,13 @@ function click_demographic_button(button) {
     }
 
     // send list of active buttons to graph
-    const graph_active_demographic_buttons = [];
+    const send_active_demographic_buttons = [];
     active_demographic_buttons.forEach(button => {
-        graph_active_demographic_buttons.push(button.id)
+        send_active_demographic_buttons.push(button.id)
     })
-    console.log(graph_active_demographic_buttons)
-    bar_graph.wrangleData(graph_active_demographic_buttons)
+    // console.log(send_active_demographic_buttons)
+    buttons.demographic_button = send_active_demographic_buttons
+    bar_graph.wrangleData(buttons)
 }
 
 
@@ -65,10 +55,11 @@ function click_bar_button(button) {
     const active_bar_buttons = document.querySelectorAll('.bar_button.active');
 
     // send list of active buttons to graph
-    const graph_active_bar_buttons = [];
+    const send_active_bar_buttons = [];
     active_bar_buttons.forEach(button => {
-        graph_active_bar_buttons.push(button.id)
+        send_active_bar_buttons.push(button.id)
     })
-    console.log(graph_active_bar_buttons)
-    bar_graph.filterBars(graph_active_bar_buttons)
+    // console.log(send_active_bar_buttons)
+    buttons.bar_buttons = send_active_bar_buttons
+    bar_graph.wrangleData(buttons)
 }

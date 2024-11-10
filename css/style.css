@@ -4,6 +4,12 @@
     justify-content: flex-end;
 }
 
+.note {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
 .button {
     background-color: #04AA6D;
     border: 2px solid black;
