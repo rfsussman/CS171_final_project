@@ -1,10 +1,12 @@
 // init global variables & switches
-let bar_graph;
+let bar_graph, demographic_map;
 let buttons = { demographic_button: ["medicare_reason"], bar_buttons:["medicaid", "medicare_advantage", "part_d", "private_insurance"]};
 
 // load data using promises
 let promises = [
     d3.csv("data/rachel_data_cleaned.csv"),
+    d3.json("https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"),
+    d3.csv("data/rachel_map_data_cleaned.csv")
 ];
 
 Promise.all(promises)
@@ -19,6 +21,7 @@ Promise.all(promises)
 // initialize graphs
 function initialize_graphs(data) {
     bar_graph = new Rachel_Grouped_Bar("bar_graph_div", data[0], buttons);
+    demographic_map = new Rachel_Demographic_Map("demographic_map_div", data[1], data[2]);
 }
 
 // button styling

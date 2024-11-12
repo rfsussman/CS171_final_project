@@ -143,12 +143,7 @@ class Rachel_Grouped_Bar {
             }));
         }).flat();
 
-        // call filterBars()
-        this.filterBars(this.subgroups);
-    }
-
-    filterBars(filter_bars) {
-        this.subgroups = filter_bars;
+        // console.log(this.data_for_graph)
         this.filtered_data_for_graph = this.data_for_graph.filter(({subgroup}) => this.subgroups.includes(subgroup))
 
         // call updateVis()
