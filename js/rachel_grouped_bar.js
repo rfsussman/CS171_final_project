@@ -86,7 +86,7 @@ class Rachel_Grouped_Bar {
         // set for now; this will update with a button eventually
         if (this.selected_category == "medicare_reason") {
             this.selected_title = "Eligibility Reason"
-            this.groups = ["Aged", "Disabled", "Unknown"]
+            this.groups = ["Aged", "Disabled"]
         } else if (this.selected_category == "age") {
             this.selected_title = "Age"
             this.groups = ["<65", "65-74", "75+"]
@@ -95,14 +95,17 @@ class Rachel_Grouped_Bar {
             this.groups = ["Female", "Male"]
         } else if (this.selected_category == "race") {
             this.selected_title = "Race"
-            this.groups = ["Non-Hispanic Black", "Non-Hispanic White", "Hispanic", "Other"]
+            this.groups = ["Black", "White", "Hispanic", "Other"]
         } if (this.selected_category == "mental_illness") {
             this.selected_title = "Mental Illness Status"
-            this.groups = ["Yes", "No", "Unknown"]
+            this.groups = ["Yes", "No"]
         }
 
         // group data by selected category
-        this.grouped_data = d3.group(this.original_data, d => d[this.selected_category])
+        this.grouped_data = d3.group(
+            this.original_data.filter(d => d[this.selected_category] !== ""),
+            d => d[this.selected_category]
+        );
 
         // initialize storage for summed data
         this.compiled_data = {};

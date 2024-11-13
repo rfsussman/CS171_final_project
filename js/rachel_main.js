@@ -1,5 +1,5 @@
 // init global variables & switches
-let bar_graph, demographic_map;
+let bar_graph, demographic_map, demographic_bar;
 let buttons = { demographic_button: ["medicare_reason"], bar_buttons:["medicaid", "medicare_advantage", "part_d", "private_insurance"]};
 
 // load data using promises
@@ -22,6 +22,11 @@ Promise.all(promises)
 function initialize_graphs(data) {
     bar_graph = new Rachel_Grouped_Bar("bar_graph_div", data[0], buttons);
     demographic_map = new Rachel_Demographic_Map("demographic_map_div", data[1], data[2]);
+    medicare_reason_bar = new Rachel_Demographic_Bar("medicare_reason_bar_div", data[0], "medicare_reason");
+    age_bar = new Rachel_Demographic_Bar("age_bar_div", data[0], "age");
+    sex_bar = new Rachel_Demographic_Bar("sex_bar_div", data[0], "sex");
+    race_bar = new Rachel_Demographic_Bar("race_bar_div", data[0], "race");
+
 }
 
 // button styling

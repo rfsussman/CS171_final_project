@@ -12,9 +12,9 @@ class Rachel_Demographic_Map {
     initVis() {
 
         // initialize svg
-        this.margin = {top: 100, right: 50, bottom: 100, left: 50},
+        this.margin = {top: 100, right: 50, bottom: 10, left: 50},
             this.width = document.getElementById(this.parent_element).getBoundingClientRect().width - this.margin.left - this.margin.right,
-            this.height =  document.getElementById(this.parent_element).getBoundingClientRect().width*0.5 - this.margin.top - this.margin.bottom
+            this.height =  document.getElementById(this.parent_element).getBoundingClientRect().width*0.3 - this.margin.top - this.margin.bottom
 
         this.svg = d3.select("#" + this.parent_element)
             .style("display", "flex")
@@ -29,7 +29,7 @@ class Rachel_Demographic_Map {
             .attr('class', 'title')
             .attr('id', 'map-title')
             .append('text')
-            .attr("font-size", "28px")
+            .attr("font-size", "18px")
             .attr('transform', `translate(${this.width / 2}, -50)`)
             .attr('text-anchor', 'middle')
             .text('Map');
@@ -47,7 +47,7 @@ class Rachel_Demographic_Map {
         this.color_legend = this.svg
             .append("g")
             .attr("class", "color-legend")
-            .attr('transform', `translate(${this.width * 8.5/10}, ${this.height/2})`)
+            .attr('transform', `translate(${this.width * 7.5/10}, ${this.height/10})`)
 
         // make rectangle to store legend gradient
         this.color_legend
@@ -58,8 +58,7 @@ class Rachel_Demographic_Map {
             .attr("width", 20)
             .attr("height", this.width/6)
             .style("stroke", "black")
-            .style("stroke-width", 2)
-            .style("fill", "url(#gradient)");
+            .style("stroke-width", 1);
 
         // get legend dimensions
         this.legend_dimensions = d3.select('#legend_rectangle')
@@ -71,9 +70,8 @@ class Rachel_Demographic_Map {
             .append("text")
             .attr("x", this.legend_dimensions.x + 10)
             .attr("y", this.legend_dimensions.y - 5)
-            .style("font-size", "14px")
+            .style("font-size", "12px")
             .attr("fill", "black")
-            .attr("font-weight", "bold")
             .style("text-anchor", "middle");
 
         // add maximum text spot
@@ -81,9 +79,8 @@ class Rachel_Demographic_Map {
             .append("text")
             .attr("x", this.legend_dimensions.x + 10)
             .attr("y", this.legend_dimensions.y + this.legend_dimensions.height + 15)
-            .style("font-size", "14px")
+            .style("font-size", "12px")
             .attr("fill", "black")
-            .attr("font-weight", "bold")
             .style("text-anchor", "middle");
 
         // initialize color scale
@@ -96,11 +93,11 @@ class Rachel_Demographic_Map {
             .attr('id', 'state_tooltip');
 
         // define projection
-        this.viewpoint = {'width': 1000, 'height': 800};
+        this.viewpoint = {'width': 1000, 'height': 1200};
         this.zoom = this.width / this.viewpoint.width;
         this.projection = d3.geoAlbersUsa()
-            .scale(1000)
-            .translate([500, 200])
+            .scale(600)
+            .translate([500, 100])
 
         // define path generator
         this.path = d3.geoPath()
@@ -120,17 +117,30 @@ class Rachel_Demographic_Map {
             .append("path")
             .attr("id", d => "map" + d.properties.name.replace(/\s+/g, '-'))
             .attr("d", this.path)
-            .attr('stroke-width', '2px')
+            .attr('stroke-width', '1px')
             .attr('stroke', 'black')
             .style("fill", "lightgrey");
 
         // call wrangleData()
-        this.wrangleData()
+        this.wrangleData("Aged")
     }
 
     wrangleData(selected_category) {
-        this.selected_category = "greater_than_74_pct"
-
+        // map selected category to recognizeable variable name
+        switch (selected_category) {
+            case "Aged": this.selected_category = "aged_pct"; break;
+            case "Disabled": this.selected_category = "disabled_pct"; break;
+            case "Unknown": this.selected_category = "aged_pct"; break;
+            case "<65": this.selected_category = "less_than_65_pct"; break;
+            case "65-74": this.selected_category = "between_65_to_74_pct"; break;
+            case "75+": this.selected_category = "greater_than_74_pct"; break;
+            case "Female": this.selected_category = "female_pct"; break;
+            case "Male": this.selected_category = "male_pct"; break;
+            case "Black": this.selected_category = "black_pct"; break;
+            case "White": this.selected_category = "white_pct"; break;
+            case "Hispanic": this.selected_category = "hispanic_pct"; break;
+            case "Other": this.selected_category = "other_pct"; break;
+        }
         // change color scheme depending on category
         this.fills
             .domain([
@@ -183,6 +193,8 @@ class Rachel_Demographic_Map {
                     case "less_than_65_pct": return "% of beneficiaries less than 65 years old";
                     case "between_65_to_74_pct": return "% of beneficiaries between 65 and 74 years old";
                     case "greater_than_74_pct": return "% of beneficiaries greater than 75 years old";
+                    case "female_pct": return "% of female beneficiaries";
+                    case "male_pct": return "% of male beneficiaries";
                     case "black_pct": return "% of Black beneficiaries";
                     case "hispanic_pct": return "% of Hispanic beneficiaries";
                     case "white_pct": return "% of white beneficiaries";
@@ -190,14 +202,25 @@ class Rachel_Demographic_Map {
                 }
             })
 
-        // update legend
+        // clear existing stops
+        this.gradient
+            .selectAll("stop").remove();
+
+        // make new stops
         this.stops = this.fills.ticks(5);
-        this.gradient.selectAll("stop")
+
+        // make new gradient
+        this.gradient
+            .selectAll("stop")
             .data(this.stops)
             .enter()
             .append("stop")
             .attr("offset", (d, i) => `${(i / (this.stops.length - 1)) * 100}%`)
             .attr("stop-color", (d) => this.fills(d));
+
+        // update fill of color legend
+        this.color_legend
+            .attr("fill", "url(#gradient)");
 
         // update legend text
         this.min_text
@@ -211,8 +234,8 @@ class Rachel_Demographic_Map {
             .on('mouseover', (event, d) => {
                 // highlight
                 d3.select(event.currentTarget)
-                    .style("fill", "#B1740F")
-                    .style("stroke", "#363020");
+                    .style("fill", "#AC3931")
+                    .attr("stroke-width", 2);
 
                 // tooltip popup
                 this.state_tooltip
@@ -252,16 +275,12 @@ class Rachel_Demographic_Map {
                          <div> Other: ${d.properties.other_pct}%</div>      
                      </div>`);
                 }
-
-
-                
-
             })
             .on('mouseout', (event, d) => {
                 // return to regular color
                 d3.select(event.currentTarget)
                     .style("fill", d => d.properties.fill)
-                    .style("stroke", "black");
+                    .attr("stroke-width", 1);
 
                 // remove tooltip popup
                 this.state_tooltip
@@ -273,6 +292,7 @@ class Rachel_Demographic_Map {
 
             })
             .transition() // has to happen after tooltip, before attributes
+            .duration(500)
             .style("fill", d => d.properties.fill);
     }
 }
