@@ -104,7 +104,7 @@ class Rachel_Demographic_Bar {
             total: this.grouped_data.get(group).length
         }));
 
-        console.log(this.data)
+        // console.log(this.data)
 
         // call updateVis()
         this.updateVis()

@@ -13,7 +13,7 @@ class Rachel_Grouped_Bar {
     initVis() {
 
         // initialize svg
-        this.margin = {top: 100, right: 30, bottom: 100, left: 60},
+        this.margin = {top: 100, right: 30, bottom: 150, left: 0},
             this.width = document.getElementById(this.parent_element).getBoundingClientRect().width - this.margin.left - this.margin.right,
             this.height =  document.getElementById(this.parent_element).getBoundingClientRect().width*0.5 - this.margin.top - this.margin.bottom
 
@@ -35,11 +35,42 @@ class Rachel_Grouped_Bar {
             .append("text")
             .attr("text-anchor", "middle")
             .attr("x", this.width/2)
-            .attr("y", 0)
+            .attr("y", -10)
             .attr("font-family", "sans-serif")
             .attr("font-size", "20px")
             .attr("fill", "black")
             .text("")
+
+        // initialize percent trouble paying bills text
+        this.percent_trouble_paying_bills_top = this.svg
+            .append("text")
+            .attr("text-anchor", "middle")
+            .attr("x", this.width/2)
+            .attr("y", this.height + 60)
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "30px")
+            .attr("fill", "black")
+
+        this.percent_trouble_paying_bills_bottom1 = this.svg
+            .append("text")
+            .attr("text-anchor", "middle")
+            .attr("x", this.width/2)
+            .attr("y", this.height + 85)
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "18px")
+            .attr("fill", "black")
+            .text("Click on a bar to learn what percent of these beneficiaries have trouble paying their medical bills.")
+
+        this.percent_trouble_paying_bills_bottom2 = this.svg
+            .append("text")
+            .attr("text-anchor", "middle")
+            .attr("x", this.width/2)
+            .attr("y", this.height + 105)
+            .attr("font-family", "sans-serif")
+            .attr("font-size", "18px")
+            .attr("fill", "black")
+            .text("")
+
 
         // initialize and generate x axis
         this.x = d3.scaleBand()
@@ -77,6 +108,17 @@ class Rachel_Grouped_Bar {
     }
 
     wrangleData(buttons) {
+
+        // clear text whenever graph is updated
+        this.percent_trouble_paying_bills_top
+            .text("")
+
+        this.percent_trouble_paying_bills_bottom1
+            .text("Click on a bar to learn what percent of these beneficiaries have trouble paying their medical bills.")
+
+        this.percent_trouble_paying_bills_bottom2
+            .text("")
+
         // console.log(buttons)
         this.selected_category = buttons.demographic_button[0]
         this.subgroups = buttons.bar_buttons
@@ -107,6 +149,8 @@ class Rachel_Grouped_Bar {
             d => d[this.selected_category]
         );
 
+        console.log(this.original_data)
+
         // initialize storage for summed data
         this.compiled_data = {};
         this.groups.forEach(group => {
@@ -115,7 +159,8 @@ class Rachel_Grouped_Bar {
                 medicaid_num: 0,
                 medicare_advantage_num: 0,
                 part_d_num: 0,
-                private_insurance_num: 0};
+                private_insurance_num: 0,
+                problem_paying_bills_num: 0};
         });
 
         // sum up number of beneficiaries per category across supplemental insurance subtypes
@@ -125,6 +170,7 @@ class Rachel_Grouped_Bar {
                 this.compiled_data[group].medicare_advantage_num += +row.medicare_advantage;
                 this.compiled_data[group].part_d_num += +row.part_d;
                 this.compiled_data[group].private_insurance_num += +row.private_insurance;
+                this.compiled_data[group].problem_paying_bills_num += +row.problem_paying_bills;
             });
         })
 
@@ -134,8 +180,10 @@ class Rachel_Grouped_Bar {
             this.compiled_data[group].medicare_advantage_pct = Math.round(100*this.compiled_data[group].medicare_advantage_num/this.compiled_data[group].total);
             this.compiled_data[group].part_d_pct = Math.round(100*this.compiled_data[group].part_d_num/this.compiled_data[group].total);
             this.compiled_data[group].private_insurance_pct = Math.round(100*this.compiled_data[group].private_insurance_num/this.compiled_data[group].total);
+            this.compiled_data[group].problem_paying_bills_pct = Math.round(100*this.compiled_data[group].problem_paying_bills_num/this.compiled_data[group].total);
         });
 
+        console.log(this.compiled_data)
         // convert data into structure for d3 plotting
         this.data_for_graph = Object.keys(this.compiled_data).map(group => {
             return this.subgroups.map(subgroup => ({
@@ -143,6 +191,7 @@ class Rachel_Grouped_Bar {
                 subgroup: subgroup,
                 value: this.compiled_data[group][`${subgroup}_pct`],
                 num_value: this.compiled_data[group][`${subgroup}_num`]
+
             }));
         }).flat();
 
@@ -150,8 +199,10 @@ class Rachel_Grouped_Bar {
         this.filtered_data_for_graph = this.data_for_graph.filter(({subgroup}) => this.subgroups.includes(subgroup))
 
         // call updateVis()
+        // this.filterDataForPercents(this.selected_category)
         this.updateVis()
     }
+
 
     updateVis() {
         // call axes
@@ -198,7 +249,8 @@ class Rachel_Grouped_Bar {
         const bars = merge_groups
             .selectAll("rect")
             .data(d => this.subgroups.map(category => ({
-                key: category,
+                group: d.group,
+                subgroup: category,
                 value: this.compiled_data[d.group][`${category}_pct`]
             })), d => d.key);
 
@@ -211,18 +263,36 @@ class Rachel_Grouped_Bar {
         bars.enter()
             .append("rect")
             .attr("class", "bar")
-            .attr("x", d => this.x_subgroups(d.key))
+            .attr("x", d => this.x_subgroups(d.subgroup))
             .attr("y", this.height)
             .attr("width", this.x_subgroups.bandwidth())
             .attr("height", 0)
             .merge(bars)
+            .on('mouseover', (event, d) => {
+                d3.select(event.currentTarget)
+                    .style("fill", "#AC3931")
+                    .attr("stroke-width", 2);
+
+            })
+            .on('mouseout', (event, d) => {
+                d3.select(event.currentTarget)
+                    .style("fill", this.fill)
+                    .attr("stroke-width", 1);
+
+            })
+            .on('click', (event, d) => {
+                console.log(d.group)
+
+                this.filterDataForPercents(this.selected_category, d.group, d.subgroup)
+
+            })
             .transition()
             .duration(1000)
-            .attr("x", d => this.x_subgroups(d.key))
+            .attr("x", d => this.x_subgroups(d.subgroup))
             .attr("y", d => this.y(d.value))
             .attr("width", this.x_subgroups.bandwidth())
             .attr("height", d => this.height - this.y(d.value))
-            .attr("fill", d => this.color_scale(d.key))
+            .attr("fill", d => this.color_scale(d.subgroup))
             .attr("stroke", "black");
 
         // initialize n labels on top of the new groups
@@ -251,10 +321,10 @@ class Rachel_Grouped_Bar {
             .attr("x", d => this.x_subgroups(d.key) + this.x_subgroups.bandwidth()/2)
             .attr("y", d => this.y(d.value) - 5)
             .attr("fill", "black")
-            .attr("font-size", "10px")
+            .attr("font-size", "12px")
             .attr("text-anchor", "middle")
             .text(function(d) {
-                return "(n=" + d.num_value + ")";
+                return "n=" + d.num_value;
             });
 
         // initialize pct labels on top of the new groups
@@ -281,13 +351,98 @@ class Rachel_Grouped_Bar {
             .attr("x", d => this.x_subgroups(d.key) + this.x_subgroups.bandwidth()/2)
             .attr("y", d => this.y(d.value) - 20)
             .attr("fill", "black")
-            .attr("font-size", "10px")
+            .attr("font-size", "14px")
             .attr("text-anchor", "middle")
             .text(function(d) {
                 return d.value + "%";
             });
 
     }
+
+    filterDataForPercents(demographic_category, group, subgroup) {
+        // filter dataset for only relevant bar
+        this.filtered_data_for_percents = this.original_data.filter(
+            row => row[demographic_category] === group && row[subgroup] === "1"
+        )
+
+        // initialize storage for summed data
+        this.filtered_compiled_data_for_percents = {total: 0, problem_paying_bills_num: 0, problem_paying_bills_pct: 0};
+        this.filtered_data_for_percents.forEach(row => {
+            this.filtered_compiled_data_for_percents.total = this.filtered_data_for_percents.length;
+            this.filtered_compiled_data_for_percents.problem_paying_bills_num += +row.problem_paying_bills
+        });
+
+        // calculate percent of beneficiaries with trouble paying medical bills
+        this.filtered_compiled_data_for_percents.problem_paying_bills_pct = Math.round(100*this.filtered_compiled_data_for_percents.problem_paying_bills_num/this.filtered_compiled_data_for_percents.total)
+
+        // update top text
+        this.percent_trouble_paying_bills_top
+            .text(this.filtered_compiled_data_for_percents.problem_paying_bills_pct + "%")
+
+        // clean group name
+        switch (group) {
+            case "Aged":
+                this.cleaned_group = "eligible for Medicare due to age";
+                break;
+            case "Disabled":
+                this.cleaned_group = "eligible for Medicare due to disability";
+                break;
+            case "Unknown":
+                this.cleaned_group = "eligible for Medicare not due to age or disability";
+                break;
+            case "<65":
+                this.cleaned_group = "less than 65 years old";
+                break;
+            case "65-74":
+                this.cleaned_group = "between 65 and 74 years old";
+                break;
+            case "75+":
+                this.cleaned_group = "more than 74 years old";
+                break;
+            case "Female":
+                this.cleaned_group = "female";
+                break;
+            case "Male":
+                this.cleaned_group = "male";
+                break;
+            case "Black":
+                this.cleaned_group = "Black";
+                break;
+            case "White":
+                this.cleaned_group = "white";
+                break;
+            case "Hispanic":
+                this.cleaned_group = "Hispanic";
+                break;
+            case "Other":
+                this.cleaned_group = "of other race";
+                break;
+        }
+
+        // clean subgroup name
+        switch (subgroup) {
+            case "medicaid":
+                this.cleaned_subgroup = "Medicaid";
+                break;
+            case "medicare_advantage":
+                this.cleaned_subgroup = "Medicare Advantage";
+                break;
+            case "part_d":
+                this.cleaned_subgroup = "Part D";
+                break;
+            case "private_insurance":
+                this.cleaned_subgroup = "private insurance";
+                break;
+        }
+
+        // update bottom text
+        this.percent_trouble_paying_bills_bottom1
+            .text("of beneficiaries who are " + this.cleaned_group)
+
+        this.percent_trouble_paying_bills_bottom2
+            .text("with supplemental " + this.cleaned_subgroup + " have trouble paying their medical bills.")
+    }
+
 }
 
 /*
