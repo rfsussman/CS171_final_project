@@ -214,7 +214,7 @@ class Rachel_Demographic_Bar {
             .attr("font-size", "10px")
             .attr("text-anchor", "middle")
             .text(function(d) {
-                return "(n=" + d.total + ")";
+                return "n=" + d.total;
             });
 
     }
