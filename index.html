@@ -12,17 +12,27 @@
     <!-- own CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <div class="container-fluid" style="height: 100vh; padding-top: 1vh">
 
+    <div class="step active" style="margin-top: 20%">
+        <h2> What is Medicare? </h2>
+    </div>
+
+    <div class = "step">
+        <div class = "body_text">
+            Medicare is a federally-funded health care program in the United States that primarily services older adults and adults with disabilities.
+            Every year, Medicare surveys its beneficiaries (recipients) about their demographics and healthcare experience.
+            This project hopes to illuminate some trends about Medicare beneficiaries and their healthcare experience.
+        </div>
+    </div>
+
+
+
     <h1> Title </h1>
 
-    <h2> What is Medicare? </h2>
-    <div> Medicare is a federally-funded health care program in the United States that primarily services older adults and adults with disabilities.
-        Every year, Medicare surveys its beneficiaries (recipients) about their demographics and healthcare experience.
-        This project hopes to illuminate some trends about Medicare beneficiaries and their healthcare experience.
-    </div>
     <h2> Who is eligible for Medicare? </h2>
     <div> Medicare is primarily available for people who are aged 65 or older. Provided that they are eligible for Social Security benefits, people
         with disabilities, permanent kidney failure, or ALS may be able to enroll for Medicare before they turn 65. We invite you to explore our interactive
@@ -213,7 +223,8 @@
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 <script src="https://d3js.org/d3-geo.v2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
-<script src="js/rachel_main.js"></script>
+<script src="https://unpkg.com/scrollama"></script>
+<script src="js/main.js"></script>
 <script src="js/rachel_grouped_bar.js"></script>
 <script src="js/rachel_demographic_map.js"></script>
 <script src="js/rachel_demographic_bar.js"></script>

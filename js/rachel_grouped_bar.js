@@ -149,7 +149,7 @@ class Rachel_Grouped_Bar {
             d => d[this.selected_category]
         );
 
-        console.log(this.original_data)
+        // console.log(this.original_data)
 
         // initialize storage for summed data
         this.compiled_data = {};
@@ -183,7 +183,7 @@ class Rachel_Grouped_Bar {
             this.compiled_data[group].problem_paying_bills_pct = Math.round(100*this.compiled_data[group].problem_paying_bills_num/this.compiled_data[group].total);
         });
 
-        console.log(this.compiled_data)
+        // console.log(this.compiled_data)
         // convert data into structure for d3 plotting
         this.data_for_graph = Object.keys(this.compiled_data).map(group => {
             return this.subgroups.map(subgroup => ({

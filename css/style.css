@@ -97,3 +97,28 @@
     max-width: 200px; /* Set a maximum width */
     word-wrap: break-word; /* Ensure long text wraps */
 }
+
+.step {
+    padding-top: 100px;
+    opacity: 0.2;
+    transform: translateY(20px);
+    width: 50%;
+    margin: 0 auto;
+    transition: all 0.5s ease-in-out;
+    font-size: 30px;
+}
+
+.step h2 {
+    font-size: 50px;
+}
+
+
+.step.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.step {
+    margin-bottom: 50vh;
+}
+
