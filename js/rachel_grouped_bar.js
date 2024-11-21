@@ -3,7 +3,7 @@ class Rachel_Grouped_Bar {
         // define variables
         this.parent_element = parent_element;
         this.original_data = bar_graph_data;
-        this.colors = ["#3C1742","#476A6F","#7D4600", "#C97B84"]
+        this.colors = ["#904C77","#587D71","#C57B57", "#258EA6"]
         this.buttons = buttons
 
         // call initVis()
@@ -13,7 +13,7 @@ class Rachel_Grouped_Bar {
     initVis() {
 
         // initialize svg
-        this.margin = {top: 100, right: 30, bottom: 150, left: 0},
+        this.margin = {top: 50, right: 0, bottom: 200, left: 100},
             this.width = document.getElementById(this.parent_element).getBoundingClientRect().width - this.margin.left - this.margin.right,
             this.height =  document.getElementById(this.parent_element).getBoundingClientRect().width*0.5 - this.margin.top - this.margin.bottom
 
@@ -46,31 +46,29 @@ class Rachel_Grouped_Bar {
             .append("text")
             .attr("text-anchor", "middle")
             .attr("x", this.width/2)
-            .attr("y", this.height + 60)
+            .attr("y", this.height + 100)
             .attr("font-family", "sans-serif")
-            .attr("font-size", "30px")
+            .attr("font-size", "44px")
             .attr("fill", "black")
+
 
         this.percent_trouble_paying_bills_bottom1 = this.svg
             .append("text")
             .attr("text-anchor", "middle")
             .attr("x", this.width/2)
-            .attr("y", this.height + 85)
+            .attr("y", this.height + 150)
             .attr("font-family", "sans-serif")
-            .attr("font-size", "18px")
+            .attr("font-size", "24px")
             .attr("fill", "black")
-            .text("Click on a bar to learn what percent of these beneficiaries have trouble paying their medical bills.")
 
         this.percent_trouble_paying_bills_bottom2 = this.svg
             .append("text")
             .attr("text-anchor", "middle")
             .attr("x", this.width/2)
-            .attr("y", this.height + 105)
+            .attr("y", this.height + 175)
             .attr("font-family", "sans-serif")
-            .attr("font-size", "18px")
+            .attr("font-size", "24px")
             .attr("fill", "black")
-            .text("")
-
 
         // initialize and generate x axis
         this.x = d3.scaleBand()
@@ -114,7 +112,7 @@ class Rachel_Grouped_Bar {
             .text("")
 
         this.percent_trouble_paying_bills_bottom1
-            .text("Click on a bar to learn what percent of these beneficiaries have trouble paying their medical bills.")
+            .text("")
 
         this.percent_trouble_paying_bills_bottom2
             .text("")
