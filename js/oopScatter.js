@@ -61,7 +61,7 @@ class OOPScatterVis {
         // Define legend scale
         vis.legendColorScale = d3.scaleOrdinal()
             .domain(["< $25,000", ">= $25,000"])
-            .range(["#1f77b4", "#ff7f0e"]);
+            .range(["#FAC748", "#9FD356"]);
 
         // Tooltip
         vis.tooltip = d3.select("body").append("div")
@@ -105,7 +105,7 @@ class OOPScatterVis {
             .attr("cx", d => vis.xScale(+d.PAMTTOT))
             .attr("cy", vis.height) // Start at the bottom
             .attr("r", 4)
-            .style("fill", d => d.CSP_INCOME === 1 ? "#1f77b4" : "#ff7f0e") // Color by income
+            .style("fill", d => d.CSP_INCOME === 1 ? "#FAC748" : "#9FD356") // Color by income
             .style("opacity", 0.7)
             .on("mouseover", (event, d) => {
                 vis.tooltip.transition().duration(200).style("opacity", 1);
