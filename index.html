@@ -169,35 +169,42 @@
         <div class = "note"> Note: since 1 beneficiary can have many types of supplemental insurance, the bars within a demographic category do not add up to 100%. </div>
     </div>
 
-    <h2> Distribution of Out-of-Pocket Costs </h2>
+    <div class="step">
+        <h4> How do out-of-pockets costs compare across demographics? </h4>
+    </div>
 
     <div>
         Building on the demographics of Medicare beneficiaries and their supplemental insurance coverage, the bar chart delves into the financial burden faced by beneficiaries in terms of out-of-pocket healthcare costs. The majority of beneficiaries experience relatively low out-of-pocket expenses, with the highest frequency concentrated in the lowest cost category. However, as costs increase, the number of beneficiaries sharply declines, revealing a small but significant group incurring expenses above $10,000. This highlights the uneven distribution of financial responsibility among Medicare beneficiaries, where a vulnerable minority bears disproportionately higher costs.
     </div>
 
-    <div class="row">
-        <div id="controls">
-            <label for="genderFilter">Gender:</label>
-            <select id="genderFilter">
-                <option value="all">All</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
+    <div class = "step">
+        <h2> Distribution of Out-of-Pocket Costs </h2>
+        <div class="row">
+            <div id="controls">
+                <label for="genderFilter">Gender:</label>
+                <select id="genderFilter">
+                    <option value="all">All</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
 
-            <label for="raceFilter">Race:</label>
-            <select id="raceFilter">
-                <option value="all">All</option>
-                <option value="white">Non-Hispanic White</option>
-                <option value="black">Non-Hispanic Black</option>
-                <option value="hispanic">Hispanic</option>
-                <option value="other">Other</option>
-            </select>
+                <label for="raceFilter">Race:</label>
+                <select id="raceFilter">
+                    <option value="all">All</option>
+                    <option value="white">Non-Hispanic White</option>
+                    <option value="black">Non-Hispanic Black</option>
+                    <option value="hispanic">Hispanic</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div id="oop_distribution_div"></div>
+            <div id="tooltip" style="position: absolute; display: none; background: #fff; border: 1px solid #ccc; padding: 5px; border-radius: 3px; pointer-events: none; font-size: 12px;"></div>
         </div>
-        <div id="oop_distribution_div"></div>
-        <div id="tooltip" style="position: absolute; display: none; background: #fff; border: 1px solid #ccc; padding: 5px; border-radius: 3px; pointer-events: none; font-size: 12px;"></div>
     </div>
 
-    <h2> Relationship between Total Payment and Sum of Out-Of-Pocket Payments</h2>
+    <div class="step">
+        <h4> What is the relationship between Medicare payments and out-of-pocket costs? </h4>
+    </div>
     <div>
         Expanding on the distribution of out-of-pocket expenses, the scatter plot provides additional context by examining the relationship between total healthcare payments and out-of-pocket costs, segmented by income group (<$25,000 and ≥$25,000). While higher total payments often correlate with increased out-of-pocket expenses, the data also uncovers income-based disparities:
         <ul>
@@ -207,16 +214,19 @@
         These patterns underscore the challenges faced by lower-income individuals, who may be disproportionately burdened despite their lower total payments.
     </div>
 
-    <div class="row">
-        <div id="scatterPlotControls">
-            <label for="incomeFilter">Income Filter:</label>
-            <select id="incomeFilter">
-                <option value="all">All</option>
-                <option value="<25000">Income < $25,000</option>
-                <option value=">=25000">Income >= $25,000</option>
-            </select>
+    <div class = "step">
+        <h2> Relationship between Total Payment and Sum of Out-Of-Pocket Payments</h2>
+        <div class="row">
+            <div id="scatterPlotControls">
+                <label for="incomeFilter">Income Filter:</label>
+                <select id="incomeFilter">
+                    <option value="all">All</option>
+                    <option value="<25000">Income < $25,000</option>
+                    <option value=">=25000">Income >= $25,000</option>
+                </select>
+            </div>
+            <div id="scatter-plot"></div>
         </div>
-        <div id="scatter-plot"></div>
     </div>
 
 </div>
@@ -227,7 +237,8 @@
 <script src="https://d3js.org/topojson.v2.min.js"></script>
 <script src="https://d3js.org/d3-geo.v2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
-<script src="js/rachel_main.js"></script>
+<script src="https://unpkg.com/scrollama"></script>
+<script src="js/main.js"></script>
 <script src="js/rachel_grouped_bar.js"></script>
 <script src="js/rachel_demographic_map.js"></script>
 <script src="js/rachel_demographic_bar.js"></script>
