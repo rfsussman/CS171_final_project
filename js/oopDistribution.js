@@ -81,6 +81,15 @@ class OOPDistributionVis {
     updateVis() {
         const vis = this;
 
+        // Get selected gender to determine bar color
+        const selectedGender = d3.select("#genderFilter").property("value");
+        let barColor = "#FAC748"; // Default color
+        if (selectedGender === "female") {
+            barColor = "#F7ACCF";
+        } else if (selectedGender === "male") {
+            barColor = "#99B2DD";
+        }
+
         // Generate histogram data
         const bins = d3.bin()
             .value(d => +d.PAMTOOP)
@@ -100,13 +109,15 @@ class OOPDistributionVis {
             .attr("y", vis.height) // Start at the bottom of the chart
             .attr("width", d => vis.xScale(d.x1) - vis.xScale(d.x0) - 1)
             .attr("height", 0) // Start with zero height
-            .style("fill", "#69b3a2")
+            .style("fill", barColor)
             .on("mouseover", (event, d) => {
                 vis.tooltip.transition().duration(200).style("opacity", 1);
                 vis.tooltip.html(`
-                    <strong>Range:</strong> ${d.x0.toFixed(2)} - ${d.x1.toFixed(2)}<br>
-                    <strong>Frequency:</strong> ${d.length}
-                `)
+            <div style="border: 1px solid black; border-radius: 5px; background: white; padding: 10px; font-size: 14px; font-family: sans-serif; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);">
+                <strong>Range:</strong> ${d.x0.toFixed(2)} - ${d.x1.toFixed(2)}<br>
+                <strong>Frequency:</strong> ${d.length}
+            </div>
+        `)
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY - 20) + "px");
             })
@@ -123,7 +134,8 @@ class OOPDistributionVis {
             .attr("x", d => vis.xScale(d.x0))
             .attr("y", d => vis.yScale(d.length))
             .attr("width", d => vis.xScale(d.x1) - vis.xScale(d.x0) - 1)
-            .attr("height", d => vis.height - vis.yScale(d.length));
+            .attr("height", d => vis.height - vis.yScale(d.length))
+            .style("fill", barColor);
 
         // EXIT
         bars.exit()
