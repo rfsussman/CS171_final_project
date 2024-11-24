@@ -57,26 +57,18 @@ function initialize_graphs(data) {
 
 // button styling
 function click_demographic_button(button) {
-    // activate button
-    button.classList.toggle("active");
-
-    // find list of active demographic buttons
-    const active_demographic_buttons = document.querySelectorAll('.demographic_button.active');
-
-    // if there are other buttons active, deactivate them
-    for (let active_demographic_button of active_demographic_buttons) {
-        if (this !== active_demographic_button) {
-            active_demographic_button.classList.remove('active');
+    // deactivate all other buttons
+    document.querySelectorAll('.demographic_button').forEach(demographic_button => {
+        if (demographic_button.id !== button.id) {
+            demographic_button.classList.remove('active');
         }
-    }
+    });
+
+    // activate current button
+    button.classList.add("active");
 
     // send list of active buttons to graph
-    const send_active_demographic_buttons = [];
-    active_demographic_buttons.forEach(button => {
-        send_active_demographic_buttons.push(button.id)
-    })
-    // console.log(send_active_demographic_buttons)
-    buttons.demographic_button = send_active_demographic_buttons
+    buttons.demographic_button = button.id
     bar_graph.wrangleData(buttons)
 }
 

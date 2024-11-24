@@ -18,8 +18,7 @@
 <div class="container-fluid" style="height: 100vh; padding-top: 1vh">
 
     <div class="step active" style="margin-top: 15%">
-        <h1> <b>Demographic differences</b> in <b>health</b> and <b>health finances</b> <br>
-            among Medicare beneficiaries </h1>
+        <h1> <b>Demographic differences</b> in <b>health finances</b> among Medicare beneficiaries </h1>
         <br>
         <h3> Insights from the Medicare Current Beneficiary Survey (2021) <h3>
     </div>
@@ -116,23 +115,23 @@
                 <ul>
                     <li> Though eligibility varies by state, beneficiaries are also eligible for <b class = "medicaid_text">Medicaid</b> if they make lower incomes.</li>
                     <ul>
-                        <li> These beneficiaries, called "dual-eligibles", often face many compounding <a href = "https://www.who.int/health-topics/social-determinants-of-health"> social risk factors</a> that impact their health. For this reason, dual-eligibles are the focus of many public health interventions. </li>
+                        <li> These "dual-eligible" beneficiaries often face many compounding <a href = "https://www.who.int/health-topics/social-determinants-of-health"> social risk factors</a> that impact their health. For this reason, many public health interventions focus on improving health care for dual-eligibles. </li>
                     </ul>
                 </ul>
                 <br>
                 <ul>
                     <li> For additional benefits like vision and dental insurance, beneficiaries can opt for a privately-administered <b class = "medicare_advantage_text">Medicare Advantage plan</b>. </li>
                     <ul>
-                        <li> Trump and allies want to <a href = "https://www.npr.org/sections/shots-health-news/2024/11/07/nx-s1-5183092/trump-election-2024-medicare-advantage"> expand Medicare Advantage</a>, though these plans are <a href = "https://www.npr.org/sections/shots-health-news/2024/11/07/nx-s1-5183092/trump-election-2024-medicare-advantage"> costlier</a> and often provide <a href = "https://www.npr.org/sections/shots-health-news/2024/11/07/nx-s1-5183092/trump-election-2024-medicare-advantage"> fewer services</a>. </li>
+                        <li> Trump and supporters want to <a href = "https://www.npr.org/sections/shots-health-news/2024/11/07/nx-s1-5183092/trump-election-2024-medicare-advantage"> expand Medicare Advantage</a>, though these plans are <a href = "https://www.npr.org/sections/shots-health-news/2024/11/07/nx-s1-5183092/trump-election-2024-medicare-advantage"> costlier</a> and often provide <a href = "https://www.npr.org/sections/shots-health-news/2024/11/07/nx-s1-5183092/trump-election-2024-medicare-advantage"> fewer services</a>. </li>
                     </ul>
                 </ul>
                 <br>
                 <ul>
-                    <li> Due to <a href = https://www.rand.org/news/press/2024/02/01.html>exorbitant</a> prescription drug costs, <a href = "https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/medicare-monthly-enrollment"> 80.4%</a> of beneficiaries also enroll in <b class = "part_d_text">Part D</b> for assistance paying for their pharmaceuticals. </li>
+                    <li> Due to <a href = https://www.rand.org/news/press/2024/02/01.html>unmanageably high</a> prescription drug costs, <a href = "https://data.cms.gov/summary-statistics-on-beneficiary-enrollment/medicare-and-medicaid-reports/medicare-monthly-enrollment"> 80.4%</a> of beneficiaries also enroll in <b class = "part_d_text">Part D</b> insurance for assistance paying for pharmaceuticals. </li>
                 </ul>
                 <br>
                 <ul>
-                    <li> Finally, beneficiaries who still receive insurance from an employer can also be <b class = "private_insurance_text">privately insured</b>.</li>
+                    <li> Finally, beneficiaries who still receive insurance from an employer are also <b class = "private_insurance_text">privately insured</b>.</li>
                 </ul>
             </ul>
         </div>
@@ -147,69 +146,62 @@
             <div> In this interactive visualization, you can explore <b>supplemental coverage</b> trends across <b>demographics</b>.
                 <br>
                 <br>
-                You can click on <b>one</b> of the demographic categories (far left) and <b>many</b> of the supplemental insurance types (second to left) to compare the <em>percent</em> and <em>number</em> of beneficiaries with each type of coverage.
+                You can click on <b>one</b> of the demographic categories (first row) and <b>many</b> of the supplemental insurance types (second row) to compare the <em>percent</em> and <em>number</em> of beneficiaries with each type of coverage.
                 <br>
                 <br>
                 Additionally, you can click on the <b>bars</b> to learn what percent of those beneficiaries have <b>trouble paying their medical bills</b>.
-
             </div>
-            <div class = "col-sm-1 align-self-center" id = "demographic_buttons">
-                <div class = "row ">
-                    <div class = "row">
-                        <button class = "button demographic_button" id = "medicare_reason"  onclick = "click_demographic_button(this)">
-                            Eligibility Reason
-                        </button>
-                    </div>
-                    <div class = "row">
-                        <button class = "button demographic_button" id = "age" onclick = "click_demographic_button(this)">
-                            Age
-                        </button>
-                    </div>
-                    <div class = "row">
-                        <button class = "button demographic_button" id = "sex" onclick = "click_demographic_button(this)">
-                            Sex
-                        </button>
-                    </div>
-                    <div class = "row">
-                        <button class = "button demographic_button" id = "race" onclick = "click_demographic_button(this)">
-                            Race
-                        </button>
-                    </div>
-                    <div class = "row">
-                        <button class = "button demographic_button" id = "mental_illness" onclick = "click_demographic_button(this)">
-                            Mental Illness
-                        </button>
-                    </div>
+            <div class = "row">
+                <div class = "col align-self-center">
+                    <button class = "button demographic_button active" id = "medicare_reason"  onclick = "click_demographic_button(this)">
+                        Eligibility Reason
+                    </button>
+                </div>
+                <div class = "col align-self-center">
+                    <button class = "button demographic_button" id = "age" onclick = "click_demographic_button(this)">
+                        Age
+                    </button>
+                </div>
+                <div class = "col align-self-center">
+                    <button class = "button demographic_button" id = "sex" onclick = "click_demographic_button(this)">
+                        Sex
+                    </button>
+                </div>
+                <div class = "col align-self-center">
+                    <button class = "button demographic_button" id = "race" onclick = "click_demographic_button(this)">
+                        Race
+                    </button>
+                </div>
+                <div class = "col align-self-center">
+                    <button class = "button demographic_button" id = "mental_illness" onclick = "click_demographic_button(this)">
+                        Mental Illness
+                    </button>
                 </div>
             </div>
-            <div class = "col-sm-1 align-self-center" id = "bar_buttons">
-                <div class = "row">
-                    <div class = "row">
-                        <button class = "button bar_button active" id = "medicaid" onclick = "click_bar_button(this)">
-                            Medicaid
-                        </button>
-                    </div>
-                    <div class = "row">
-                        <button class = "button bar_button active" id = "medicare_advantage" onclick = "click_bar_button(this)">
-                            Medicare Advantage
-                        </button>
-                    </div>
-                    <div class = "row">
-                        <button class = "button bar_button active" id = "part_d" onclick = "click_bar_button(this)">
-                            Part D
-                        </button>
-                    </div>
-                    <div class = "row">
-                        <button class = "button bar_button active" id = "private_insurance" onclick = "click_bar_button(this)">
-                            Private
-                        </button>
-                    </div>
+            <div class = "row">
+                <div class = "col align-self-center">
+                    <button class = "button bar_button active" id = "medicaid" onclick = "click_bar_button(this)">
+                        Medicaid
+                    </button>
+                </div>
+                <div class = "col align-self-center">
+                    <button class = "button bar_button active" id = "medicare_advantage" onclick = "click_bar_button(this)">
+                        Medicare Advantage
+                    </button>
+                </div>
+                <div class = "col align-self-center">
+                    <button class = "button bar_button active" id = "part_d" onclick = "click_bar_button(this)">
+                        Part D
+                    </button>
+                </div>
+                <div class = "col align-self-center">
+                    <button class = "button bar_button active" id = "private_insurance" onclick = "click_bar_button(this)">
+                        Private
+                    </button>
                 </div>
             </div>
-            <div class = "col-sm-10">
-                <div class = "row">
-                    <div id = "bar_graph_div"> </div>
-                </div>
+            <div class = "row align-self-center">
+                <div id = "bar_graph_div"> </div>
             </div>
         </div>
     </div>
@@ -222,9 +214,11 @@
         <div>
             Building on the demographics of Medicare beneficiaries and their supplemental insurance coverage, the bar chart delves into the financial burden faced by beneficiaries in terms of out-of-pocket healthcare costs. The majority of beneficiaries experience relatively low out-of-pocket expenses, with the highest frequency concentrated in the lowest cost category. However, as costs increase, the number of beneficiaries sharply declines, revealing a small but significant group incurring expenses above $10,000. This highlights the uneven distribution of financial responsibility among Medicare beneficiaries, where a vulnerable minority bears disproportionately higher costs.
         </div>
-        <h2> Distribution of Out-of-Pocket Costs </h2>
+        <br>
+        <br>
+        <h2 style = "font-size: 20px"> Distribution of Out-of-Pocket Costs </h2>
         <div class="row">
-            <div id="controls">
+            <div id="controls" style = "font-size: 14px">
                 <label for="genderFilter">Gender:</label>
                 <select id="genderFilter">
                     <option value="all">All</option>
@@ -259,9 +253,11 @@
             </ul>
             These patterns underscore the challenges faced by lower-income individuals, who may be disproportionately burdened despite their lower total payments.
         </div>
-        <h2> Relationship between Total Payment and Sum of Out-Of-Pocket Payments</h2>
+        <br>
+        <br>
+        <h2 style = "font-size: 20px"> Relationship between Total Payment and Sum of Out-Of-Pocket Payments</h2>
         <div class="row">
-            <div id="scatterPlotControls">
+            <div id="scatterPlotControls" style = "font-size: 14px">
                 <label for="incomeFilter">Income Filter:</label>
                 <select id="incomeFilter">
                     <option value="all">All</option>

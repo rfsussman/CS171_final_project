@@ -9,7 +9,7 @@ class OOPDistributionVis {
         const vis = this;
 
         // Define margins and initial dimensions
-        vis.margin = { top: 20, right: 20, bottom: 50, left: 70 };
+        vis.margin = { top: 50, right: 150, bottom: 50, left: 100 };
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = vis.width * 0.5 - vis.margin.top - vis.margin.bottom;
 
@@ -35,6 +35,7 @@ class OOPDistributionVis {
             .attr("text-anchor", "middle")
             .attr("x", vis.width / 2)
             .attr("y", vis.height + 40)
+            .attr("font-size", "15px")
             .text("Out-of-Pocket Costs ($)");
 
         vis.svg.append("text")
@@ -43,6 +44,7 @@ class OOPDistributionVis {
             .attr("transform", "rotate(-90)")
             .attr("x", -vis.height / 2)
             .attr("y", -50)
+            .attr("font-size", "15px")
             .text("Frequency");
 
         // Tooltip

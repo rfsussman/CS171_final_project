@@ -1,27 +1,25 @@
 .row {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-}
-
-.note {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    align-self: center;
+    justify-content: center;
 }
 
 .button {
     background-color: #04AA6D;
     border: 2px solid black;
-    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
     text-align: center;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    width: 100%;
     font-size: 14px;
     margin-top: 25px;
     margin-left: 25px;
+    margin-right: 25px;
     opacity: 0.75;
 }
 
@@ -36,14 +34,14 @@
 .button:hover {
     opacity: 1;
     border: 3px solid black;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .button.active {
     opacity: 1;
     border: 4px solid black;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 #medicare_reason {
@@ -120,16 +118,13 @@ body {
 }
 
 .step {
-    padding-top: 100px;
-    padding-bottom: 100px;
-    padding-left: 35px;
-    padding-right: 35px;
+    padding: 50px;
     opacity: 0.2;
     transform: translateY(20px);
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     transition: all 0.5s ease-in-out;
-    font-size: 30px;
+    font-size: 24px;
     background-color: white;
     border-radius: 10px;
     border: 2px solid black;

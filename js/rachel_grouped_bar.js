@@ -13,7 +13,7 @@ class Rachel_Grouped_Bar {
     initVis() {
 
         // initialize svg
-        this.margin = {top: 50, right: 0, bottom: 200, left: 100},
+        this.margin = {top: 150, right: 0, bottom: 200, left: 50},
             this.width = document.getElementById(this.parent_element).getBoundingClientRect().width - this.margin.left - this.margin.right,
             this.height =  document.getElementById(this.parent_element).getBoundingClientRect().width*0.5 - this.margin.top - this.margin.bottom
 
@@ -35,7 +35,7 @@ class Rachel_Grouped_Bar {
             .append("text")
             .attr("text-anchor", "middle")
             .attr("x", this.width/2)
-            .attr("y", -10)
+            .attr("y", -50)
             .attr("font-family", "sans-serif")
             .attr("font-size", "20px")
             .attr("fill", "black")
@@ -48,26 +48,25 @@ class Rachel_Grouped_Bar {
             .attr("x", this.width/2)
             .attr("y", this.height + 100)
             .attr("font-family", "sans-serif")
-            .attr("font-size", "44px")
+            .attr("font-size", "30px")
             .attr("fill", "black")
-
 
         this.percent_trouble_paying_bills_bottom1 = this.svg
             .append("text")
             .attr("text-anchor", "middle")
             .attr("x", this.width/2)
-            .attr("y", this.height + 150)
+            .attr("y", this.height + 130)
             .attr("font-family", "sans-serif")
-            .attr("font-size", "24px")
+            .attr("font-size", "18px")
             .attr("fill", "black")
 
         this.percent_trouble_paying_bills_bottom2 = this.svg
             .append("text")
             .attr("text-anchor", "middle")
             .attr("x", this.width/2)
-            .attr("y", this.height + 175)
+            .attr("y", this.height + 150)
             .attr("font-family", "sans-serif")
-            .attr("font-size", "24px")
+            .attr("font-size", "18px")
             .attr("fill", "black")
 
         // initialize and generate x axis
@@ -118,12 +117,12 @@ class Rachel_Grouped_Bar {
             .text("")
 
         // console.log(buttons)
-        this.selected_category = buttons.demographic_button[0]
+        this.selected_category = buttons.demographic_button
         this.subgroups = buttons.bar_buttons
         // console.log(this.selected_category)
         // console.log(this.subgroups)
 
-        // set for now; this will update with a button eventually
+        // make cleaner title and group names
         if (this.selected_category == "medicare_reason") {
             this.selected_title = "Eligibility Reason"
             this.groups = ["Aged", "Disabled"]

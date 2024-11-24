@@ -10,7 +10,7 @@ class OOPScatterVis {
         const vis = this;
 
         // Define margins and initial dimensions
-        vis.margin = { top: 50, right: 150, bottom: 50, left: 60 };
+        vis.margin = { top: 50, right: 150, bottom: 50, left: 100 };
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = vis.width * 0.6 - vis.margin.top - vis.margin.bottom;
 
@@ -43,6 +43,7 @@ class OOPScatterVis {
             .attr("text-anchor", "middle")
             .attr("x", vis.width / 2)
             .attr("y", vis.height + 40)
+            .attr("font-size", "15px")
             .text("Total Payments ($)");
 
         vis.svg.append("text")
@@ -50,12 +51,14 @@ class OOPScatterVis {
             .attr("text-anchor", "middle")
             .attr("transform", "rotate(-90)")
             .attr("x", -vis.height / 2)
-            .attr("y", -50)
+            .attr("y", -60)
+            .attr("font-size", "15px")
             .text("Out-of-Pocket Payments ($)");
 
         // Add a legend group at the upper right
         vis.legendGroup = vis.svg.append("g")
             .attr("class", "legendOrdinal")
+            .attr("font-size", "14px")
             .attr("transform", `translate(${vis.width - 100}, 20)`);
 
         // Define legend scale
