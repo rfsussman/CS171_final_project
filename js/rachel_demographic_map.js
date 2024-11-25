@@ -14,7 +14,7 @@ class Rachel_Demographic_Map {
         // initialize svg
         this.margin = {top: 100, right: 50, bottom: 10, left: 50},
             this.width = document.getElementById(this.parent_element).getBoundingClientRect().width - this.margin.left - this.margin.right,
-            this.height =  document.getElementById(this.parent_element).getBoundingClientRect().width*0.3 - this.margin.top - this.margin.bottom
+            this.height =  document.getElementById(this.parent_element).getBoundingClientRect().width*0.5 - this.margin.top - this.margin.bottom
 
         this.svg = d3.select("#" + this.parent_element)
             .style("display", "flex")
@@ -47,7 +47,7 @@ class Rachel_Demographic_Map {
         this.color_legend = this.svg
             .append("g")
             .attr("class", "color-legend")
-            .attr('transform', `translate(${this.width * 7.5/10}, ${this.height/10})`)
+            .attr('transform', `translate(${this.width * 9/10}, ${this.height/10})`)
 
         // make rectangle to store legend gradient
         this.color_legend
@@ -93,11 +93,12 @@ class Rachel_Demographic_Map {
             .attr('id', 'state_tooltip');
 
         // define projection
-        this.viewpoint = {'width': 1000, 'height': 1200};
+        // this.viewpoint = {'width': 1000, 'height': 1200};
+        this.viewpoint = {'width': 500, 'height': 600};
         this.zoom = this.width / this.viewpoint.width;
         this.projection = d3.geoAlbersUsa()
-            .scale(600)
-            .translate([500, 100])
+            .scale(500)
+            .translate([250, 100])
 
         // define path generator
         this.path = d3.geoPath()

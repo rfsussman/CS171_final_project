@@ -379,40 +379,46 @@ class Rachel_Grouped_Bar {
         // clean group name
         switch (group) {
             case "Aged":
-                this.cleaned_group = "eligible for Medicare due to age";
+                this.cleaned_group = "are eligible for Medicare due to age";
                 break;
             case "Disabled":
-                this.cleaned_group = "eligible for Medicare due to disability";
+                this.cleaned_group = "are eligible for Medicare due to disability";
                 break;
             case "Unknown":
-                this.cleaned_group = "eligible for Medicare not due to age or disability";
+                this.cleaned_group = "are eligible for Medicare not due to age or disability";
                 break;
             case "<65":
-                this.cleaned_group = "less than 65 years old";
+                this.cleaned_group = "are less than 65 years old";
                 break;
             case "65-74":
-                this.cleaned_group = "between 65 and 74 years old";
+                this.cleaned_group = "are between 65 and 74 years old";
                 break;
             case "75+":
-                this.cleaned_group = "more than 74 years old";
+                this.cleaned_group = "are more than 74 years old";
                 break;
             case "Female":
-                this.cleaned_group = "female";
+                this.cleaned_group = "are female";
                 break;
             case "Male":
-                this.cleaned_group = "male";
+                this.cleaned_group = "are male";
                 break;
             case "Black":
-                this.cleaned_group = "Black";
+                this.cleaned_group = "are Black";
                 break;
             case "White":
-                this.cleaned_group = "white";
+                this.cleaned_group = "are white";
                 break;
             case "Hispanic":
-                this.cleaned_group = "Hispanic";
+                this.cleaned_group = "are Hispanic";
                 break;
             case "Other":
-                this.cleaned_group = "of other race";
+                this.cleaned_group = "are of other race";
+                break;
+            case "Yes":
+                this.cleaned_group = "have a history of mental illness";
+                break;
+            case "No":
+                this.cleaned_group = "do not have a history of mental illness";
                 break;
         }
 
@@ -434,7 +440,7 @@ class Rachel_Grouped_Bar {
 
         // update bottom text
         this.percent_trouble_paying_bills_bottom1
-            .text("of beneficiaries who are " + this.cleaned_group)
+            .text("of beneficiaries who " + this.cleaned_group)
 
         this.percent_trouble_paying_bills_bottom2
             .text("with supplemental " + this.cleaned_subgroup + " have trouble paying their medical bills.")
