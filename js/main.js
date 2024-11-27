@@ -92,6 +92,7 @@ function click_bar_button(button) {
 
 // implement scrollama
 const scroller = scrollama();
+const dots = document.querySelectorAll('.dot');
 
 scroller
     .setup({
@@ -99,14 +100,19 @@ scroller
         offset: 0.5,
     })
     .onStepEnter((response) => {
-        // Add active class to the current step
+        // add active class
         document.querySelectorAll(".step").forEach((step) => {
             step.classList.remove("active");
         });
         response.element.classList.add("active");
+
+        // activate dot
+        document.querySelectorAll(".dot").forEach((dot, index) => {
+            dot.classList.toggle("active", index === response.index);
+        });
     })
     .onStepExit((response) => {
-        // Only remove the active class if scrolling up
+        // remove active class if scrolling up
         if (response.direction === "up") {
             response.element.classList.remove("active");
         }

@@ -1,4 +1,4 @@
-,year,state,total,aged,disabled,male,female,white,black,hispanic,other,less_than_65,between_65_to_74,greater_than_74,aged_pct,disabled_pct,male_pct,female_pct,white_pct,black_pct,hispanic_pct,other_pct,less_than_65_pct,between_65_to_74_pct,greater_than_74_pct
+,year,state,total,aged,disabled,male,female,white,black,hispanic,other,less_than_65,between_65_to_74,greater_than_74,pct_aged,pct_disabled,pct_male,pct_female,pct_white,pct_black,pct_hispanic,pct_other,pct_less_than_65,pct_between_65_to_74,pct_greater_than_74
 346867,2021,Alabama,1070474.0,866594.0,203880.0,480691.0,589783.0,787616.0,253074.0,9340.0,20445.0,203880.0,506608.0,359987.0,81.0,19.0,44.9,55.1,73.6,23.6,0.9,1.9,19.0,47.3,33.6
 346936,2021,Alaska,108116.0,96353.0,11764.0,54672.0,53445.0,79800.0,2834.0,3111.0,22371.0,11764.0,62607.0,33745.0,89.1,10.9,50.6,49.4,73.8,2.6,2.9,20.7,10.9,57.9,31.2
 346968,2021,Arizona,1400160.0,1256668.0,143492.0,650142.0,750018.0,1074842.0,46430.0,184964.0,93924.0,143492.0,712471.0,544197.0,89.8,10.2,46.4,53.6,76.8,3.3,13.2,6.7,10.2,50.9,38.9

@@ -91,7 +91,8 @@ class Rachel_Demographic_Bar {
     }
 
     wrangleData() {
-
+        // define filter flag to determine which data to use
+        this.filter_flag = 0
         // group data by selected category
         this.grouped_data = d3.group(
             this.original_data.filter(d => d[this.demographic_variable] !== ""),
@@ -101,7 +102,7 @@ class Rachel_Demographic_Bar {
         // initialize storage for total numbers data
         this.data = this.groups.map(group => ({
             group: group,
-            total: this.grouped_data.get(group).length
+            y: this.grouped_data.get(group).length
         }));
 
         // console.log(this.data)
@@ -110,13 +111,33 @@ class Rachel_Demographic_Bar {
         this.updateVis()
     }
 
+    filterData(state_data) {
+        // update filter flag since state data will be used
+        this.filter_flag = 1
+
+        // capture dataframe sent by map vis
+        this.state_data = state_data
+        // console.log(this.state_data)
+
+        // call updateVis()
+        this.updateVis()
+
+    }
     updateVis() {
+        if(this.filter_flag == 0) {
+            this.data_for_graph = this.data
+        } else if (this.filter_flag == 1) {
+            this.data_for_graph = this.state_data
+        }
+
+        // console.log(this.data_for_graph)
+
         // call axes
         this.x
             .domain(this.groups)
 
         this.y
-            .domain([0, d3.max(this.data, d => d.total)])
+            .domain([0, d3.max(this.data_for_graph, d => d.y)])
 
         this.x_axis
             .call(d3.axisBottom(this.x))
@@ -135,7 +156,7 @@ class Rachel_Demographic_Bar {
         // make bar graph groups
         this.bars = this.svg
             .selectAll("rect")
-            .data(this.data, d => d.group);
+            .data(this.data_for_graph, d => d.group);
 
         // remove old groups
         this.bars
@@ -177,22 +198,29 @@ class Rachel_Demographic_Bar {
                     .html(``);
             })
             .on('click', (event, d) => {
-                console.log(d.group)
+                // console.log(d.group)
                 demographic_map.wrangleData(d.group)
+
+                // reset visualization
+                this.filter_flag = 0
+                medicare_reason_bar.wrangleData()
+                age_bar.wrangleData()
+                sex_bar.wrangleData()
+                race_bar.wrangleData()
             })
             .transition()
             .duration(1000)
             .attr("x", d => this.x(d.group))
-            .attr("y", d => this.y(d.total))
+            .attr("y", d => this.y(d.y))
             .attr("width", this.x.bandwidth())
-            .attr("height", d => this.height - this.y(d.total))
+            .attr("height", d => this.height - this.y(d.y))
             .attr("fill", this.fill)
             .attr("stroke", "black");
 
         // make bar graph labels
         this.labels = this.svg
             .selectAll(".n_label")
-            .data(this.data, d => d.group);
+            .data(this.data_for_graph, d => d.group);
 
         // remove old groups
         this.labels
@@ -209,12 +237,16 @@ class Rachel_Demographic_Bar {
             .transition()
             .duration(1000)
             .attr("x", d => this.x(d.group) + this.x.bandwidth()/2)
-            .attr("y", d => this.y(d.total) - 5)
+            .attr("y", d => this.y(d.y) - 5)
             .attr("fill", "black")
             .attr("font-size", "10px")
             .attr("text-anchor", "middle")
-            .text(function(d) {
-                return "n=" + d.total;
+            .text((d) => {
+                if (this.filter_flag == 0) {
+                    return "n=" + d.y;
+                } else if (this.filter_flag == 1) {
+                    return d.y + "%";
+                }
             });
 
     }

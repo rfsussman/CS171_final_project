@@ -129,18 +129,18 @@ class Rachel_Demographic_Map {
     wrangleData(selected_category) {
         // map selected category to recognizeable variable name
         switch (selected_category) {
-            case "Aged": this.selected_category = "aged_pct"; break;
-            case "Disabled": this.selected_category = "disabled_pct"; break;
-            case "Unknown": this.selected_category = "aged_pct"; break;
-            case "<65": this.selected_category = "less_than_65_pct"; break;
-            case "65-74": this.selected_category = "between_65_to_74_pct"; break;
-            case "75+": this.selected_category = "greater_than_74_pct"; break;
-            case "Female": this.selected_category = "female_pct"; break;
-            case "Male": this.selected_category = "male_pct"; break;
-            case "Black": this.selected_category = "black_pct"; break;
-            case "White": this.selected_category = "white_pct"; break;
-            case "Hispanic": this.selected_category = "hispanic_pct"; break;
-            case "Other": this.selected_category = "other_pct"; break;
+            case "Aged": this.selected_category = "pct_aged"; break;
+            case "Disabled": this.selected_category = "pct_disabled"; break;
+            case "Unknown": this.selected_category = "pct_aged"; break;
+            case "<65": this.selected_category = "pct_less_than_65"; break;
+            case "65-74": this.selected_category = "pct_between_65_to_74"; break;
+            case "75+": this.selected_category = "pct_greater_than_74"; break;
+            case "Female": this.selected_category = "pct_female"; break;
+            case "Male": this.selected_category = "pct_male"; break;
+            case "Black": this.selected_category = "pct_black"; break;
+            case "White": this.selected_category = "pct_white"; break;
+            case "Hispanic": this.selected_category = "pct_hispanic"; break;
+            case "Other": this.selected_category = "pct_other"; break;
         }
         // change color scheme depending on category
         this.fills
@@ -148,16 +148,16 @@ class Rachel_Demographic_Map {
                 d3.min(this.demographic_data, d => +d[this.selected_category]),
                 d3.max(this.demographic_data, d => +d[this.selected_category])])
 
-        if (["aged_pct", "disabled_pct"].includes(this.selected_category)){
+        if (["pct_aged", "pct_disabled"].includes(this.selected_category)){
             this.fills
                 .range(["#FFFFFF", "#F70073"])
-        } else if (["less_than_65_pct", "between_65_to_74_pct", "greater_than_74_pct"].includes(this.selected_category)){
+        } else if (["pct_less_than_65", "pct_between_65_to_74", "pct_greater_than_74"].includes(this.selected_category)){
             this.fills
                 .range(["#FFFFFF", "#FAB300"])
-        } else if (["female_pct", "male_pct"].includes(this.selected_category)){
+        } else if (["pct_female", "pct_male"].includes(this.selected_category)){
             this.fills
                 .range(["#FFFFFF", "#81DE00"])
-        } else if (["black_pct", "hispanic_pct", "white_pct", "other_pct"].includes(this.selected_category)){
+        } else if (["pct_black", "pct_hispanic", "pct_white", "pct_other"].includes(this.selected_category)){
             this.fills
                 .range(["#FFFFFF", "#0050E6"])
         }
@@ -167,17 +167,17 @@ class Rachel_Demographic_Map {
             const matched_state = this.demographic_data.find(s => s.state === state.properties.name);
             if (matched_state) {
                 state.properties.fill = this.fills(+matched_state[this.selected_category]);
-                state.properties.aged_pct = +matched_state.aged_pct;
-                state.properties.disabled_pct = +matched_state.disabled_pct;
-                state.properties.less_than_65_pct = +matched_state.less_than_65_pct;
-                state.properties.between_65_to_74_pct = +matched_state.between_65_to_74_pct;
-                state.properties.greater_than_74_pct = +matched_state.greater_than_74_pct;
-                state.properties.female_pct = +matched_state.female_pct;
-                state.properties.male_pct = +matched_state.male_pct;
-                state.properties.black_pct = +matched_state.black_pct;
-                state.properties.hispanic_pct = +matched_state.hispanic_pct;
-                state.properties.white_pct = +matched_state.white_pct;
-                state.properties.other_pct = +matched_state.other_pct;
+                state.properties.pct_aged = +matched_state.pct_aged;
+                state.properties.pct_disabled = +matched_state.pct_disabled;
+                state.properties.pct_less_than_65 = +matched_state.pct_less_than_65;
+                state.properties.pct_between_65_to_74 = +matched_state.pct_between_65_to_74;
+                state.properties.pct_greater_than_74 = +matched_state.pct_greater_than_74;
+                state.properties.pct_female = +matched_state.pct_female;
+                state.properties.pct_male = +matched_state.pct_male;
+                state.properties.pct_black = +matched_state.pct_black;
+                state.properties.pct_hispanic = +matched_state.pct_hispanic;
+                state.properties.pct_white = +matched_state.pct_white;
+                state.properties.pct_other = +matched_state.pct_other;
             }
         })
 
@@ -189,17 +189,17 @@ class Rachel_Demographic_Map {
         this.map_title
             .text(d => {
                 switch (this.selected_category) {
-                    case "aged_pct": return "% of beneficiaries eligible for Medicare due to age";
-                    case "disabled_pct": return "% of beneficiaries eligible for Medicare due to disability";
-                    case "less_than_65_pct": return "% of beneficiaries less than 65 years old";
-                    case "between_65_to_74_pct": return "% of beneficiaries between 65 and 74 years old";
-                    case "greater_than_74_pct": return "% of beneficiaries greater than 75 years old";
-                    case "female_pct": return "% of female beneficiaries";
-                    case "male_pct": return "% of male beneficiaries";
-                    case "black_pct": return "% of Black beneficiaries";
-                    case "hispanic_pct": return "% of Hispanic beneficiaries";
-                    case "white_pct": return "% of white beneficiaries";
-                    case "other_pct": return "% of beneficiaries of other race";
+                    case "pct_aged": return "% of beneficiaries eligible for Medicare due to age";
+                    case "pct_disabled": return "% of beneficiaries eligible for Medicare due to disability";
+                    case "pct_less_than_65": return "% of beneficiaries less than 65 years old";
+                    case "pct_between_65_to_74": return "% of beneficiaries between 65 and 74 years old";
+                    case "pct_greater_than_74": return "% of beneficiaries greater than 75 years old";
+                    case "pct_female": return "% of female beneficiaries";
+                    case "pct_male": return "% of male beneficiaries";
+                    case "pct_black": return "% of Black beneficiaries";
+                    case "pct_hispanic": return "% of Hispanic beneficiaries";
+                    case "pct_white": return "% of white beneficiaries";
+                    case "pct_other": return "% of beneficiaries of other race";
                 }
             })
 
@@ -244,38 +244,63 @@ class Rachel_Demographic_Map {
                     .style("left", event.pageX + 20 + "px")
                     .style("top", event.pageY + "px")
 
-                if (["aged_pct", "disabled_pct"].includes(this.selected_category)){
+                if (["pct_aged", "pct_disabled"].includes(this.selected_category)){
                     this.state_tooltip
                         .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 15px">
                          <div style = "font-weight: bold">Eligibility Reason in ${d.properties.name}:</div>
-                         <div> Aged: ${d.properties.aged_pct}%</div> 
-                         <div> Disabled: ${d.properties.disabled_pct}%</div>                                  
+                         <div> Aged: ${d.properties.pct_aged}%</div> 
+                         <div> Disabled: ${d.properties.pct_disabled}%</div> 
+                         <br>
+                         <div> Click to show ${d.properties.name}'s demographic breakdown above.</div>                            
                      </div>`);
-                } else if (["less_than_65_pct", "between_65_to_74_pct", "greater_than_74_pct"].includes(this.selected_category)){
+                } else if (["pct_less_than_65", "pct_between_65_to_74", "pct_greater_than_74"].includes(this.selected_category)){
                     this.state_tooltip
                         .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 15px">
                          <div style = "font-weight: bold">Age in ${d.properties.name}:</div>
-                         <div> < 65: ${d.properties.less_than_65_pct}%</div> 
-                         <div> 65-74: ${d.properties.between_65_to_74_pct}%</div>        
-                         <div> > 74: ${d.properties.greater_than_74_pct}%</div>                                     
+                         <div> < 65: ${d.properties.pct_less_than_65}%</div> 
+                         <div> 65-74: ${d.properties.pct_between_65_to_74}%</div>        
+                         <div> > 74: ${d.properties.pct_greater_than_74}%</div>    
+                         <br>
+                         <div> Click to show ${d.properties.name}'s demographic breakdown above.</div>                            
                      </div>`);
-                } else if (["female_pct", "male_pct"].includes(this.selected_category)){
+                } else if (["pct_female", "pct_male"].includes(this.selected_category)){
                     this.state_tooltip
                         .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 15px">
                          <div style = "font-weight: bold">Sex in ${d.properties.name}:</div>
-                         <div> Female: ${d.properties.female_pct}%</div> 
-                         <div> Male: ${d.properties.male_pct}%</div>        
+                         <div> Female: ${d.properties.pct_female}%</div> 
+                         <div> Male: ${d.properties.pct_male}%</div>   
+                         <br>
+                         <div> Click to show ${d.properties.name}'s demographic breakdown above.</div>                            
                      </div>`);
-                } else if (["black_pct", "hispanic_pct", "white_pct", "other_pct"].includes(this.selected_category)){
+                } else if (["pct_black", "pct_hispanic", "pct_white", "pct_other"].includes(this.selected_category)) {
                     this.state_tooltip
                         .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 15px">
                          <div style = "font-weight: bold">Race in ${d.properties.name}:</div>
-                         <div> Black: ${d.properties.black_pct}%</div> 
-                         <div> Hispanic: ${d.properties.hispanic_pct}%</div>        
-                         <div> White: ${d.properties.white_pct}%</div>      
-                         <div> Other: ${d.properties.other_pct}%</div>      
+                         <div> Black: ${d.properties.pct_black}%</div> 
+                         <div> White: ${d.properties.pct_white}%</div>      
+                         <div> Hispanic: ${d.properties.pct_hispanic}%</div>        
+                         <div> Other: ${d.properties.pct_other}%</div>  
+                         <br>
+                         <div> Click to show ${d.properties.name}'s demographic breakdown above.</div>                            
                      </div>`);
                 }
+            })
+            .on('click', (event, d) => {
+                // send (pre-wrangled) percents to change the bar heights with (original bar graph dataset is not disaggregated by state)
+                medicare_reason_bar.filterData([{ group: "Aged", y: d.properties.pct_aged },
+                    {group: "Disabled", y: d.properties.pct_disabled }])
+
+                age_bar.filterData([{ group: "<65", y: d.properties.pct_less_than_65 },
+                    {group: "65-74", y: d.properties.pct_between_65_to_74 },
+                    {group: "75+", y: d.properties.pct_greater_than_74 }])
+
+                sex_bar.filterData([{ group: "Female", y: d.properties.pct_female },
+                    {group: "Male", y: d.properties.pct_male }])
+
+                race_bar.filterData([{ group: "Black", y: d.properties.pct_black },
+                    {group: "White", y: d.properties.pct_white },
+                    {group: "Hispanic", y: d.properties.pct_hispanic },
+                    {group: "Other", y: d.properties.pct_other }])
             })
             .on('mouseout', (event, d) => {
                 // return to regular color

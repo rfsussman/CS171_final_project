@@ -15,12 +15,32 @@
 
 <body>
 
+<div class="progress-container">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+</div>
+
 <div class="container-fluid" style="height: 100vh; padding-top: 1vh">
 
     <div class="step active" style="margin-top: 15%">
+        <img src = "img/medicare_logo.png"></img>
         <h1> <b>Demographic differences</b> in <b>health</b> and <b>health finances</b> among Medicare beneficiaries </h1>
         <br>
-        <h3> Insights from the Medicare Current Beneficiary Survey (2021) <h3>
+        <h3> Insights from the Medicare Current Beneficiary Survey (2021) </h3>
+
     </div>
 
     <div class="step">
@@ -51,38 +71,15 @@
     </div>
 
     <div class = "step">
-        <h2> Who is eligible for Medicare? </h2>
-        <div> Medicare is primarily available for people who are aged 65 or older. Provided that they are eligible for Social Security benefits, people
-            with disabilities, permanent kidney failure, or ALS may be able to enroll for Medicare before they turn 65. We invite you to explore our interactive
-            map to observe the geographic trends of Medicare eligibility. In America's Deep South and Appalachia regions, there is a higher concentration
-            of people with disabilities who are Medicare beneficiaries, with Arkansas having the highest proportion at 19.2%. These areas also experience
-            the highest amount of Chronic Kidney Disease according to the
-            <a href="https://nccd.cdc.gov/ckd/detail.aspx?Qnum=Q705">U.S. Centers for Disease Control and Prevention.</a>
-        </div>
-        <h2> Race, Ethnicity, & Regional Trends </h2>
-        <div>  This survey offers a valuable look at the state of diversity of Medicare beneficiaries, emphasizing how different racial and ethnic groups are
-            distributed across the U.S. By clicking on the blue bars, you can visualize the geographic spread of race and ethnicity groups whom responded to the survey. The skewed
-            colorations suggest there are regional trends in Medicare enrollment when it comes to race and ethnicity, perhaps reflecting historical demographics
-            and healthcare access disparities. For Black respondents to the MCBS, there is a higher proportion of Black beneficiaries in the South, including
-            states like Mississippi, Louisiana, and Georgia. The highest concentration reachies up to 32% in Mississippi, which also happens to be the U.S. state
-            with the highest population according to the
-            <a href="https://minorityhealth.hhs.gov/blackafrican-american-health#:~:text=According%20to%20the%20U.S.%20Census,of%20the%20total%20U.S.%20population%20">Office of Minority Health</a>
-            at the U.S. Health & Human Services Department. A similar parallel with national census data is seen with the distribution of Hispanic-identifying respondents to the survey, with most being
-            from the Southwestern region of the U.S. The proportion of Hispanic respondents tops out at 32.2% in New Mexico, and similar proportions are seen in neighboring states. This alignment between
-            the MCBS survey's racial and ethnic distribution and national census data reinforces the representativeness of the survey, suggesting that its insights are reflective of
-            broader population trends and regional disparities in healthcare access.
-        </div>
-        <h2> Gender & Age Patterns in the Survey </h2>
-        <div> Amongst MCBS survey respondents, there is higher proportion of females compared to males, somewhat aligning with national gender trends, as women generally live longer than men according to the U.S.
-            <a href="https://www.cdc.gov/mmwr/volumes/72/wr/mm7228a5.htm">Center for Disease Control</a>. The survey gender ratio is roughly 85 men for 100 women, slightly outpacing the national
-            gender ratio. This suggests that Medicare beneficiaries may include a slightly larger proportion of women, perhaps reflecting women’s longer life expectancy and greater reliance
-            on healthcare services in older age. This may also indicate a need for prioritization of gender-specific healthcare services and policies that can address the unique challenges faced by
-            older women beneficiaries. Similar to the concentration of Medicare beneficiaries who have disabilities in the Deep South and Appalachia regions, most people younger than 65 years old
-            who receive Medicare live here as well.
-
-        </div>
+        We invite you to explore our interactive map to observe the geographic trends of Medicare's beneficiaries.
         <br>
-
+        <br>
+        If you click on a <b>bar</b>, you can visualize the geographic spread of that demographic on the <em>map</em>.
+        <br>
+        <br>
+        If you click on a <b>state</b>, you can visualize the demographic breakdown for that state on the <em>bars</em>.
+        <br>
+        <br>
         <div class = "row">
             <div class = "col-sm-3" >
                 <div class = "row">
@@ -107,6 +104,38 @@
         </div>
         <div class = "row">
             <div id = "demographic_map_div"> </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+
+        <h2> Who is eligible for Medicare? </h2>
+        <div> Medicare is primarily available for people who are aged 65 or older. Provided that they are eligible for Social Security benefits, people
+            with disabilities, permanent kidney failure, or ALS may be able to enroll for Medicare before they turn 65.  In America's Deep South and Appalachia regions, there is a higher concentration
+            of people with disabilities who are Medicare beneficiaries, with Arkansas having the highest proportion at 19.2%. These areas also experience
+            the highest amount of Chronic Kidney Disease according to the
+            <a href="https://nccd.cdc.gov/ckd/detail.aspx?Qnum=Q705">U.S. Centers for Disease Control and Prevention.</a>
+        </div>
+        <h2> Race, Ethnicity, & Regional Trends </h2>
+        <div>  This survey offers a valuable look at the state of diversity of Medicare beneficiaries, emphasizing how different racial and ethnic groups are
+            distributed across the U.S. The skewed colorations suggest there are regional trends in Medicare enrollment when it comes to race and ethnicity, perhaps reflecting historical demographics
+            and healthcare access disparities. For Black respondents to the MCBS, there is a higher proportion of Black beneficiaries in the South, including
+            states like Mississippi, Louisiana, and Georgia. The highest concentration reachies up to 32% in Mississippi, which also happens to be the U.S. state
+            with the highest population according to the
+            <a href="https://minorityhealth.hhs.gov/blackafrican-american-health#:~:text=According%20to%20the%20U.S.%20Census,of%20the%20total%20U.S.%20population%20">Office of Minority Health</a>
+            at the U.S. Health & Human Services Department. A similar parallel with national census data is seen with the distribution of Hispanic-identifying respondents to the survey, with most being
+            from the Southwestern region of the U.S. The proportion of Hispanic respondents tops out at 32.2% in New Mexico, and similar proportions are seen in neighboring states. This alignment between
+            the MCBS survey's racial and ethnic distribution and national census data reinforces the representativeness of the survey, suggesting that its insights are reflective of
+            broader population trends and regional disparities in healthcare access.
+        </div>
+        <h2> Gender & Age Patterns in the Survey </h2>
+        <div> Amongst MCBS survey respondents, there is higher proportion of females compared to males, somewhat aligning with national gender trends, as women generally live longer than men according to the U.S.
+            <a href="https://www.cdc.gov/mmwr/volumes/72/wr/mm7228a5.htm">Center for Disease Control</a>. The survey gender ratio is roughly 85 men for 100 women, slightly outpacing the national
+            gender ratio. This suggests that Medicare beneficiaries may include a slightly larger proportion of women, perhaps reflecting women’s longer life expectancy and greater reliance
+            on healthcare services in older age. This may also indicate a need for prioritization of gender-specific healthcare services and policies that can address the unique challenges faced by
+            older women beneficiaries. Similar to the concentration of Medicare beneficiaries who have disabilities in the Deep South and Appalachia regions, most people younger than 65 years old
+            who receive Medicare live here as well.
         </div>
     </div>
 
