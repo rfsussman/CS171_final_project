@@ -16,21 +16,21 @@
 <body>
 
 <div class="progress-container">
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
+    <div class="dot" data-step="1" data-preview="Demographic differences in health"></div>
+    <div class="dot" data-step="2" data-preview="What is Medicare?"></div>
+    <div class="dot" data-step="3" data-preview="Learn about Medicare beneficiaries"></div>
+    <div class="dot" data-step="4" data-preview="Explore demographic trends"></div>
+    <div class="dot" data-step="5" data-preview="Who is eligible for Medicare"></div>
+    <div class="dot" data-step="6" data-preview="What is supplemental insurance"></div>
+    <div class="dot" data-step="7" data-preview="Types of suplmtl insurance"></div>
+    <div class="dot" data-step="8" data-preview="How does coverage vary?"></div>
+    <div class="dot" data-step="9" data-preview="Supplemental insurance demographics"></div>
+    <div class="dot" data-step="10" data-preview="Out-of-pocket costs by demographics"></div>
+    <div class="dot" data-step="11" data-preview="Distribution of out-of-pocket costs"></div>
+    <div class="dot" data-step="12" data-preview="Total payments vs. OOP costs"></div>
+    <div class="dot" data-step="13" data-preview="Scatter plot of payments vs. OOP"></div>
+    <div class="dot" data-step="14" data-preview="Summary"></div>
+    <div class="dot" data-step="15" data-preview="CS171 Final Project by R^3"></div>
 </div>
 
 <div class="container-fluid" style="height: 100vh; padding-top: 1vh">
@@ -248,11 +248,6 @@
     </div>
 
     <div class = "step">
-        <div>
-            Building on the demographics of Medicare beneficiaries and their supplemental insurance coverage, the bar chart delves into the financial burden faced by beneficiaries in terms of out-of-pocket healthcare costs. The majority of beneficiaries experience relatively low out-of-pocket expenses, with the highest frequency concentrated in the lowest cost category. However, as costs increase, the number of beneficiaries sharply declines, revealing a small but significant group incurring expenses above $10,000. This highlights the uneven distribution of financial responsibility among Medicare beneficiaries, where a vulnerable minority bears disproportionately higher costs.
-        </div>
-        <br>
-        <br>
         <h2 style = "font-size: 20px"> Distribution of Out-of-Pocket Costs </h2>
         <div class="row">
             <div id="controls" style = "font-size: 14px">
@@ -275,6 +270,10 @@
             <div id="oop_distribution_div"></div>
             <div id="tooltip" style="position: absolute; display: none; background: #fff; border: 1px solid #ccc; padding: 5px; border-radius: 3px; pointer-events: none; font-size: 12px;"></div>
         </div>
+        <br>
+        <div>
+            Building on the demographics of Medicare beneficiaries and their supplemental insurance coverage, the bar chart delves into the financial burden faced by beneficiaries in terms of out-of-pocket healthcare costs. The majority of beneficiaries experience relatively low out-of-pocket expenses, with the highest frequency concentrated in the lowest cost category. However, as costs increase, the number of beneficiaries sharply declines, revealing a small but significant group incurring expenses above $10,000. This highlights the uneven distribution of financial responsibility among Medicare beneficiaries, where a vulnerable minority bears disproportionately higher costs.
+        </div>
     </div>
 
     <div class="step">
@@ -282,16 +281,6 @@
     </div>
 
     <div class = "step">
-        <div>
-            Expanding on the distribution of out-of-pocket expenses, the scatter plot provides additional context by examining the relationship between total healthcare payments and out-of-pocket costs, segmented by income group (<$25,000 and ≥$25,000). While higher total payments often correlate with increased out-of-pocket expenses, the data also uncovers income-based disparities:
-            <ul>
-                <li>Lower-income beneficiaries are concentrated in the lower payment ranges yet still face considerable variability in out-of-pocket costs.</li>
-                <li>Higher-income beneficiaries are more evenly distributed across the payment spectrum, with outliers incurring exceptionally high total payments and out-of-pocket costs.</li>
-            </ul>
-            These patterns underscore the challenges faced by lower-income individuals, who may be disproportionately burdened despite their lower total payments.
-        </div>
-        <br>
-        <br>
         <h2 style = "font-size: 20px"> Relationship between Total Payment and Sum of Out-Of-Pocket Payments</h2>
         <div class="row">
             <div id="scatterPlotControls" style = "font-size: 14px">
@@ -303,6 +292,15 @@
                 </select>
             </div>
             <div id="scatter-plot"></div>
+        </div>
+        <br>
+        <div>
+            Expanding on the distribution of out-of-pocket expenses, the scatter plot provides additional context by examining the relationship between total healthcare payments and out-of-pocket costs, segmented by income group (<$25,000 and ≥$25,000). While higher total payments often correlate with increased out-of-pocket expenses, the data also uncovers income-based disparities:
+            <ul>
+                <li style="background-color: #FAC748; font-weight: bold;">Lower-income beneficiaries are concentrated in the lower payment ranges yet still face considerable variability in out-of-pocket costs.</li>
+                <li style="background-color: #9FD356; font-weight: bold;">Higher-income beneficiaries are more evenly distributed across the payment spectrum, with outliers incurring exceptionally high total payments and out-of-pocket costs.</li>
+            </ul>
+            These patterns underscore the challenges faced by lower-income individuals, who may be disproportionately burdened despite their lower total payments.
         </div>
     </div>
 
@@ -338,6 +336,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
 <script src="https://unpkg.com/scrollama"></script>
 <script src="js/main.js"></script>
+<script src="js/mainPageScrolling.js"></script>
 <script src="js/rachel_grouped_bar.js"></script>
 <script src="js/rachel_demographic_map.js"></script>
 <script src="js/rachel_demographic_bar.js"></script>

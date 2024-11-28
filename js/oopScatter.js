@@ -111,6 +111,15 @@ class OOPScatterVis {
             .style("fill", d => d.CSP_INCOME === 1 ? "#FAC748" : "#9FD356") // Color by income
             .style("opacity", 0.7)
             .on("mouseover", (event, d) => {
+                // Highlight the hovered point
+                d3.select(event.currentTarget)
+                    .transition()
+                    .duration(200)
+                    .attr("r", 8) // Increase size
+                    .style("stroke", "black")
+                    .style("stroke-width", 2);
+
+                // Show tooltip
                 vis.tooltip.transition().duration(200).style("opacity", 1);
                 vis.tooltip.html(
                     `<strong>Total Payments:</strong> $${d.PAMTTOT.toLocaleString()}<br>
@@ -120,6 +129,14 @@ class OOPScatterVis {
                     .style("top", `${event.pageY - 20}px`);
             })
             .on("mouseout", () => {
+                // Reset the point appearance
+                d3.select(event.currentTarget)
+                    .transition()
+                    .duration(200)
+                    .attr("r", 4) // Reset size
+                    .style("stroke", "none");
+
+                // Hide tooltip
                 vis.tooltip.transition().duration(200).style("opacity", 0);
             })
             .merge(circles) // ENTER + UPDATE
