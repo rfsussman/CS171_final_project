@@ -147,10 +147,32 @@ section {
     border: 1px solid black;
     border-radius: 50%;
     transition: background-color 0.1s ease;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .dot.active {
     background-color: darkslategrey;
+}
+
+/* Tooltip container */
+.dot-tooltip {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 12px;
+    color: #333;
+    white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none;
+    pointer-events: none;
+}
+
+.dot:hover {
+    background-color: lightblue;
 }
 
 .step {

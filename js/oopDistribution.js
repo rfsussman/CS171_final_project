@@ -147,6 +147,29 @@ class OOPDistributionVis {
             .attr("height", 0)
             .remove();
 
+        // Add labels to bars
+        const labels = vis.svg.selectAll(".bar-label").data(bins);
+
+        // ENTER
+        labels.enter()
+            .append("text")
+            .attr("class", "bar-label")
+            .attr("x", d => vis.xScale(d.x0) + (vis.xScale(d.x1) - vis.xScale(d.x0)) / 2)
+            .attr("y", vis.height) // Start at the bottom
+            .attr("text-anchor", "middle")
+            .attr("fill", "black")
+            .attr("font-size", "12px")
+            .text(d => d.length)
+            .merge(labels) // ENTER + UPDATE
+            .transition()
+            .duration(1000)
+            .attr("x", d => vis.xScale(d.x0) + (vis.xScale(d.x1) - vis.xScale(d.x0)) / 2)
+            .attr("y", d => vis.yScale(d.length) - 5) // Position above the bar
+            .text(d => d.length);
+
+        // EXIT
+        labels.exit().remove();
+
         // Update axes
         vis.xAxis.transition().duration(1000).call(d3.axisBottom(vis.xScale));
         vis.yAxis.transition().duration(1000).call(d3.axisLeft(vis.yScale));
