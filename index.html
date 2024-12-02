@@ -25,12 +25,14 @@
     <div class="dot" data-step="7" data-preview="Types of suplmtl insurance"></div>
     <div class="dot" data-step="8" data-preview="How does coverage vary?"></div>
     <div class="dot" data-step="9" data-preview="Supplemental insurance demographics"></div>
-    <div class="dot" data-step="10" data-preview="Out-of-pocket costs by demographics"></div>
-    <div class="dot" data-step="11" data-preview="Distribution of out-of-pocket costs"></div>
-    <div class="dot" data-step="12" data-preview="Total payments vs. OOP costs"></div>
-    <div class="dot" data-step="13" data-preview="Scatter plot of payments vs. OOP"></div>
-    <div class="dot" data-step="14" data-preview="Summary"></div>
-    <div class="dot" data-step="15" data-preview="CS171 Final Project by R^3"></div>
+    <div class="dot" data-step="10" data-preview="Chronic conditions and Medicare satisfaction"></div>
+    <div class="dot" data-step="11" data-preview="Chronic conditions & Medicare donut charts"></div>
+    <div class="dot" data-step="12" data-preview="Out-of-pocket costs by demographics"></div>
+    <div class="dot" data-step="13" data-preview="Distribution of out-of-pocket costs"></div>
+    <div class="dot" data-step="14" data-preview="Total payments vs. OOP costs"></div>
+    <div class="dot" data-step="15" data-preview="Scatter plot of payments vs. OOP"></div>
+    <div class="dot" data-step="16" data-preview="Summary"></div>
+    <div class="dot" data-step="17" data-preview="CS171 Final Project by R^3"></div>
 </div>
 
 <div class="container-fluid" style="height: 100vh; padding-top: 1vh">
@@ -111,31 +113,25 @@
         <br>
 
         <h2> Who is eligible for Medicare? </h2>
-        <div> Medicare is primarily available for people who are aged 65 or older. Provided that they are eligible for Social Security benefits, people
-            with disabilities, permanent kidney failure, or ALS may be able to enroll for Medicare before they turn 65.  In America's Deep South and Appalachia regions, there is a higher concentration
-            of people with disabilities who are Medicare beneficiaries, with Arkansas having the highest proportion at 19.2%. These areas also experience
-            the highest amount of Chronic Kidney Disease according to the
+        <div> Medicare primarily serves individuals aged 65 and older, as well as those under 65 with disabilities, kidney failure,
+            or ALS who qualify through Social Security. The Deep South and Appalachia have higher concentrations of beneficiaries
+            with disabilities, with Arkansas leading at 19.2%. These areas also report elevated rates of Chronic Kidney Disease,
+            highlighting regional health challenges, according to the
             <a href="https://nccd.cdc.gov/ckd/detail.aspx?Qnum=Q705">U.S. Centers for Disease Control and Prevention.</a>
         </div>
         <h2> Race, Ethnicity, & Regional Trends </h2>
-        <div>  This survey offers a valuable look at the state of diversity of Medicare beneficiaries, emphasizing how different racial and ethnic groups are
-            distributed across the U.S. The skewed colorations suggest there are regional trends in Medicare enrollment when it comes to race and ethnicity, perhaps reflecting historical demographics
-            and healthcare access disparities. For Black respondents to the MCBS, there is a higher proportion of Black beneficiaries in the South, including
+        <div> For Black respondents to the MCBS, there is a higher proportion of Black beneficiaries in the South, including
             states like Mississippi, Louisiana, and Georgia. The highest concentration reachies up to 32% in Mississippi, which also happens to be the U.S. state
             with the highest population according to the
             <a href="https://minorityhealth.hhs.gov/blackafrican-american-health#:~:text=According%20to%20the%20U.S.%20Census,of%20the%20total%20U.S.%20population%20">Office of Minority Health</a>
             at the U.S. Health & Human Services Department. A similar parallel with national census data is seen with the distribution of Hispanic-identifying respondents to the survey, with most being
-            from the Southwestern region of the U.S. The proportion of Hispanic respondents tops out at 32.2% in New Mexico, and similar proportions are seen in neighboring states. This alignment between
-            the MCBS survey's racial and ethnic distribution and national census data reinforces the representativeness of the survey, suggesting that its insights are reflective of
-            broader population trends and regional disparities in healthcare access.
-        </div>
+            from the Southwestern region of the U.S. The proportion of Hispanic respondents tops out at 32.2% in New Mexico, and similar proportions are seen in neighboring states.
         <h2> Gender & Age Patterns in the Survey </h2>
         <div> Amongst MCBS survey respondents, there is higher proportion of females compared to males, somewhat aligning with national gender trends, as women generally live longer than men according to the U.S.
             <a href="https://www.cdc.gov/mmwr/volumes/72/wr/mm7228a5.htm">Center for Disease Control</a>. The survey gender ratio is roughly 85 men for 100 women, slightly outpacing the national
             gender ratio. This suggests that Medicare beneficiaries may include a slightly larger proportion of women, perhaps reflecting women’s longer life expectancy and greater reliance
             on healthcare services in older age. This may also indicate a need for prioritization of gender-specific healthcare services and policies that can address the unique challenges faced by
-            older women beneficiaries. Similar to the concentration of Medicare beneficiaries who have disabilities in the Deep South and Appalachia regions, most people younger than 65 years old
-            who receive Medicare live here as well.
+            older women beneficiaries.
         </div>
     </div>
 
@@ -248,7 +244,15 @@
     </div>
     <div class="step">
         <div id="legend-container"></div>
-        <div id="donut-charts" style="display: flex; flex-wrap: wrap; justify-content: center;"></div>
+        <div id="donut-charts" style="display: flex; flex-wrap: nowrap; justify-content: space-around; align-items: center; overflow-x: auto; gap: 20px;">
+        </div>
+        <div> The data highlights notable disparities in chronic health conditions and Medicare satisfaction across racial
+            groups. Black respondents report the highest rates of <b class="diabetes_text">diabetes (17.4%)</b> and dissatisfaction with Medicare (13.8%)
+            compared to other groups. Hispanic respondents show a relatively higher rate of satisfaction with Medicare (67.9%),
+            but notable rates of <b class="high_blood_pressure_text">high blood pressure (40.2%)</b>. Meanwhile, White respondents have the highest satisfaction
+            rate (75.6%) but still face a significant prevalence of high blood pressure (43.6%). These trends underscore the
+            importance of addressing health inequities and improving Medicare services to better serve diverse populations.
+        </div>
     </div>
 
     <div class="step">
@@ -314,6 +318,16 @@
 
     <div class = "step">
         <h2> Summary: </h2>
+        <div>
+            The geographic, demographic, and financial diversity of Medicare beneficiaries is important to recognize when making policy decisions
+            to promote equitable access to high-quality health care.
+            People of color experience chronic conditions at a higher rate, while also giving Medicare the lowest satisfaction rating
+            amongst Americans. This underscores the importance of tailoring healthcare to the specific needs of not only each racial
+            and ethnic group, but also making sure that regional differences and nuances are factored in.
+            From the cost perspective, both OOP distribution and scatter plot reveal disparities in out-of-pocket costs influenced by
+            social and racial factors, with certain racial socioeconomic groups facing higher financial burdens. This should be
+            recognized by decision makers when they update the Medicare policy in future.
+        </div>
     </div>
 
     <div class="step">
@@ -322,11 +336,11 @@
         <br>
         <div style="font-size:20px"> CS171 Final Project, Fall 2024 </div>
         <div style="font-size:18px">
-            Ricky Razon: rrazon@college.harvard.edu
+            <a href="http://www.linkedin.com/in/ricardorazon/">Ricky Razon</a>: rrazon@college.harvard.edu
             <br>
-            Ryan Li: chiranli@hsph.harvard.edu
+            <a href="http://www.linkedin.com/in/ryan-li-809932204">Ryan Li</a>: chiranli@hsph.harvard.edu
             <br>
-            Rachel Sussman: rsussman@hsph.harvard.edu
+            <a href="https://www.linkedin.com/in/rachel-freed-sussman/">Rachel Sussman</a>: rsussman@hsph.harvard.edu
         </div>
     </div>
 
