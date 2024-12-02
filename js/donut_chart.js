@@ -3,9 +3,9 @@ const ethnicityData = [
     {
         ethnicity: "Black",
         chronicConditions: [
-            { condition: "Diabetes", value: 10 },
-            { condition: "Kidney Failure", value: 20 },
-            { condition: "High Blood Pressure", value: 70 },
+            { condition: "Diabetes", value: 41 },
+            { condition: "Heart Disease", value: 13 },
+            { condition: "High Blood Pressure", value: 75 },
         ],
         satisfaction: [
             { level: "Satisfied", value: 70 },
@@ -16,9 +16,9 @@ const ethnicityData = [
     {
         ethnicity: "Hispanic",
         chronicConditions: [
-            { condition: "Diabetes", value: 40 },
-            { condition: "Kidney Failure", value: 10 },
-            { condition: "High Blood Pressure", value: 50 },
+            { condition: "Diabetes", value: 43 },
+            { condition: "Kidney Failure", value: 9 },
+            { condition: "High Blood Pressure", value: 65 },
         ],
         satisfaction: [
             { level: "Satisfied", value: 60 },
@@ -29,9 +29,9 @@ const ethnicityData = [
     {
         ethnicity: "White",
         chronicConditions: [
-            { condition: "Diabetes", value: 25 },
-            { condition: "Kidney Failure", value: 15 },
-            { condition: "High Blood Pressure", value: 60 },
+            { condition: "Diabetes", value: 27 },
+            { condition: "Kidney Failure", value: 10 },
+            { condition: "High Blood Pressure", value: 39 },
         ],
         satisfaction: [
             { level: "Satisfied", value: 80 },

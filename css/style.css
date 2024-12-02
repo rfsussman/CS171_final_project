@@ -229,3 +229,20 @@ img {
     width: 50%;
     display: block;
 }
+
+#donut-charts {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    overflow-x: auto;
+    gap: 20px;
+}
+
+.diabetes_text {
+    color: #AC9FBB;
+}
+
+.high_blood_pressure_text {
+    color: #5A1807;
+}
