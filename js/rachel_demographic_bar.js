@@ -181,7 +181,7 @@ class Rachel_Demographic_Bar {
                     .style("opacity", 1)
                     .style("left", event.pageX + 10 + "px")
                     .style("top", event.pageY + "px")
-                    .html(`<div style="border: solid black 1px; border-radius: 2px; background: white; padding: 5px; font-size: 12px">
+                    .html(`<div style="border: solid black 1px; border-radius: 2px; background: white; padding: 5px; font-size: 14px">
                          <div> Click to color the map</div> 
                          <div> by ${this.selected_title}: ${d.group}</div> 
                      </div>`);

@@ -80,7 +80,7 @@ const tooltip = d3.select("body")
     .style("padding", "10px")
     .style("border-radius", "5px")
     .style("pointer-events", "none")
-    .style("font-size", "12px");
+    .style("font-size", "14px");
 
 // SVG containers for each racial group
 const container = d3
@@ -90,7 +90,6 @@ const container = d3
     .enter()
     .append("div")
     .attr("class", "chart")
-    .style("margin", "10px")
     .style("text-align", "center");
 
 container.append("h4")

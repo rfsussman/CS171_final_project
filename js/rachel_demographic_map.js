@@ -246,7 +246,7 @@ class Rachel_Demographic_Map {
 
                 if (["pct_aged", "pct_disabled"].includes(this.selected_category)){
                     this.state_tooltip
-                        .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 15px">
+                        .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 14px">
                          <div style = "font-weight: bold">Eligibility Reason in ${d.properties.name}:</div>
                          <div> Aged: ${d.properties.pct_aged}%</div> 
                          <div> Disabled: ${d.properties.pct_disabled}%</div> 
@@ -255,7 +255,7 @@ class Rachel_Demographic_Map {
                      </div>`);
                 } else if (["pct_less_than_65", "pct_between_65_to_74", "pct_greater_than_74"].includes(this.selected_category)){
                     this.state_tooltip
-                        .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 15px">
+                        .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 14px">
                          <div style = "font-weight: bold">Age in ${d.properties.name}:</div>
                          <div> < 65: ${d.properties.pct_less_than_65}%</div> 
                          <div> 65-74: ${d.properties.pct_between_65_to_74}%</div>        
@@ -265,7 +265,7 @@ class Rachel_Demographic_Map {
                      </div>`);
                 } else if (["pct_female", "pct_male"].includes(this.selected_category)){
                     this.state_tooltip
-                        .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 15px">
+                        .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 14px">
                          <div style = "font-weight: bold">Sex in ${d.properties.name}:</div>
                          <div> Female: ${d.properties.pct_female}%</div> 
                          <div> Male: ${d.properties.pct_male}%</div>   
@@ -274,7 +274,7 @@ class Rachel_Demographic_Map {
                      </div>`);
                 } else if (["pct_black", "pct_hispanic", "pct_white", "pct_other"].includes(this.selected_category)) {
                     this.state_tooltip
-                        .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 15px">
+                        .html(`<div style="border: solid black; border-radius: 5px; background: white; padding: 10px; font-size: 14px">
                          <div style = "font-weight: bold">Race in ${d.properties.name}:</div>
                          <div> Black: ${d.properties.pct_black}%</div> 
                          <div> White: ${d.properties.pct_white}%</div>      

@@ -13,7 +13,7 @@ class Rachel_Grouped_Bar {
     initVis() {
 
         // initialize svg
-        this.margin = {top: 150, right: 0, bottom: 200, left: 50},
+        this.margin = {top: 150, right: 0, bottom: 180, left: 50},
             this.width = document.getElementById(this.parent_element).getBoundingClientRect().width - this.margin.left - this.margin.right,
             this.height =  document.getElementById(this.parent_element).getBoundingClientRect().width*0.5 - this.margin.top - this.margin.bottom
 
@@ -111,10 +111,10 @@ class Rachel_Grouped_Bar {
             .text("")
 
         this.percent_trouble_paying_bills_bottom1
-            .text("")
+            .text("Click on a bar above to see what percent of beneficiaries")
 
         this.percent_trouble_paying_bills_bottom2
-            .text("")
+            .text("in this group have trouble paying their medical bills.")
 
         // console.log(buttons)
         this.selected_category = buttons.demographic_button
@@ -268,13 +268,13 @@ class Rachel_Grouped_Bar {
             .on('mouseover', (event, d) => {
                 d3.select(event.currentTarget)
                     .style("fill", "#AC3931")
-                    .attr("stroke-width", 2);
+                    .attr("stroke-width", 3);
 
             })
             .on('mouseout', (event, d) => {
                 d3.select(event.currentTarget)
                     .style("fill", this.fill)
-                    .attr("stroke-width", 1);
+                    .attr("stroke-width", 2);
 
             })
             .on('click', (event, d) => {
@@ -290,7 +290,8 @@ class Rachel_Grouped_Bar {
             .attr("width", this.x_subgroups.bandwidth())
             .attr("height", d => this.height - this.y(d.value))
             .attr("fill", d => this.color_scale(d.subgroup))
-            .attr("stroke", "black");
+            .attr("stroke", "black")
+            .attr("stroke-width", 2);
 
         // initialize n labels on top of the new groups
         const n_labels = merge_groups
