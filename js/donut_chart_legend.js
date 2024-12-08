@@ -25,7 +25,7 @@ const chronicLegendItems = chronicLegend
 
 chronicLegendItems
     .selectAll(".chronic-item")
-    .data(["Diabetes", "Kidney Failure", "High Blood Pressure"])
+    .data(["Heart Disease", "Diabetes", "High Blood Pressure"])
     .enter()
     .append("div")
     .attr("class", "chronic-item")
@@ -63,7 +63,7 @@ const satisfactionLegendItems = satisfactionLegend
 
 satisfactionLegendItems
     .selectAll(".satisfaction-item")
-    .data(["Satisfied", "Neutral", "Dissatisfied"])
+    .data(["Very Satisfied", "Satisfied", "Dissatisfied", "Very Dissatisfied"])
     .enter()
     .append("div")
     .attr("class", "satisfaction-item")
