@@ -90,31 +90,25 @@ function click_bar_button(button) {
     bar_graph.wrangleData(buttons)
 }
 
-// implement scrollama
-const scroller = scrollama();
+// use interaction observer
+const steps = document.querySelectorAll('.step');
 const dots = document.querySelectorAll('.dot');
 
-scroller
-    .setup({
-        step: ".step",
-        offset: 0.5,
-    })
-    .onStepEnter((response) => {
-        // add active class
-        document.querySelectorAll(".step").forEach((step) => {
-            step.classList.remove("active");
-        });
-        response.element.classList.add("active");
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            // Add active class to step
+            entry.target.classList.add('active');
 
-        // activate dot
-        document.querySelectorAll(".dot").forEach((dot, index) => {
-            dot.classList.toggle("active", index === response.index);
-        });
-    })
-    .onStepExit((response) => {
-        // remove active class if scrolling up
-        if (response.direction === "up") {
-            response.element.classList.remove("active");
+            // Activate corresponding dot
+            const index = Array.from(steps).indexOf(entry.target);
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        } else {
+            entry.target.classList.remove('active');
         }
     });
+}, { threshold: 0.5 }); // Match Scrollama offset
 
+steps.forEach((step) => observer.observe(step));

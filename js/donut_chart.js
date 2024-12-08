@@ -7,7 +7,8 @@ const maxRadius = 100;
 // colors for chronic conditions and satisfaction levels
 const chronicColor = d3.scaleOrdinal()
     .domain(["Diabetes", "Heart Disease", "High Blood Pressure"])
-    .range(["#235789", "#AC9FBB", "#5A1807"]);
+    .range(["#F78154", "#0075C4", " #4C3B4D"]); // Updated distinct colors
+
 
 const satisfactionColor = d3.scaleOrdinal()
     .domain(["Very Satisfied", "Satisfied", "Dissatisfied", "Very Dissatisfied"])
@@ -55,6 +56,8 @@ d3.csv("data/ricardo_data_cleaned.csv").then(data => {
     svg.each(function (data) {
         const g = d3.select(this);
         const chronicConditions = data.chronicConditions;
+        console.log(chronicConditions)
+
 
         // dynamically calculate the starting radius
         const startingRadius = maxRadius - ringThickness * (chronicConditions.length + 1);
@@ -90,6 +93,7 @@ d3.csv("data/ricardo_data_cleaned.csv").then(data => {
                 });
         });
     });
+
 
     // draw outer rings for medicare satisfaction
     svg.each(function (data) {
@@ -144,9 +148,9 @@ function processData(data) {
     return Array.from(grouped, ([ethnicity, rows]) => {
         // calculate chronic condition proportions
         const chronicConditions = [
-            { condition: "Diabetes", value: calculateProportion(rows, "HLT_OCBETES") },
-            { condition: "Heart Disease", value: calculateProportion(rows, "Heart_Disease") },
-            { condition: "High Blood Pressure", value: calculateProportion(rows, "High_Blood_Pressure") },
+            { condition: "Heart Disease", value: calculateProportion(rows, "Heart_Disease", "Yes")  },
+            { condition: "Diabetes", value: calculateProportion(rows, "HLT_OCBETES", "Yes") },
+            { condition: "High Blood Pressure", value: calculateProportion(rows, "High_Blood_Pressure", "Yes") },
         ];
 
         // calculate medicare satisfaction proportions
