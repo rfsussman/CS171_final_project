@@ -1,14 +1,13 @@
-// dimensions
+// note dimensions
 const width = 300;
 const height = 300;
 const ringThickness = 20;
 const maxRadius = 100;
 
-// colors for chronic conditions and satisfaction levels
+// define colors for chronic conditions and satisfaction levels
 const chronicColor = d3.scaleOrdinal()
     .domain(["Diabetes", "Heart Disease", "High Blood Pressure"])
     .range(["#F78154", "#0075C4", " #4C3B4D"]); // Updated distinct colors
-
 
 const satisfactionColor = d3.scaleOrdinal()
     .domain(["Very Satisfied", "Satisfied", "Dissatisfied", "Very Dissatisfied"])
@@ -46,6 +45,7 @@ d3.csv("data/ricardo_data_cleaned.csv").then(data => {
         .text(d => d.ethnicity)
         .style("margin-bottom", "10px");
 
+    // define svg
     const svg = container.append("svg")
         .attr("width", width)
         .attr("height", height)
@@ -56,8 +56,6 @@ d3.csv("data/ricardo_data_cleaned.csv").then(data => {
     svg.each(function (data) {
         const g = d3.select(this);
         const chronicConditions = data.chronicConditions;
-        console.log(chronicConditions)
-
 
         // dynamically calculate the starting radius
         const startingRadius = maxRadius - ringThickness * (chronicConditions.length + 1);
@@ -69,6 +67,7 @@ d3.csv("data/ricardo_data_cleaned.csv").then(data => {
                 .startAngle(0)
                 .endAngle((condition.value / 100) * 2 * Math.PI);
 
+            // define and color inner donuts
             g.append("path")
                 .attr("d", arc)
                 .attr("fill", chronicColor(condition.condition))
@@ -94,24 +93,28 @@ d3.csv("data/ricardo_data_cleaned.csv").then(data => {
         });
     });
 
-
-    // draw outer rings for medicare satisfaction
+    // draw outer rings representing medicare satisfaction
     svg.each(function (data) {
+        // for each race, note webpage element and assign data
         const g = d3.select(this);
         const satisfactionData = data.satisfaction;
 
+        // define radii
         const satisfactionInnerRadius = maxRadius - ringThickness;
         const satisfactionOuterRadius = maxRadius;
 
+        // define outer arc
         const arcOuter = d3.arc()
             .innerRadius(satisfactionInnerRadius)
             .outerRadius(satisfactionOuterRadius);
 
+        // define pie values
         const pie = d3
             .pie()
             .value(d => d.value)
             .sort(null);
 
+        // establish satisfaction sections and mouseover
         g.selectAll(".satisfaction-ring")
             .data(pie(satisfactionData))
             .enter()
@@ -161,6 +164,7 @@ function processData(data) {
             { level: "Very Dissatisfied", value: calculateProportion(rows, "Medicare_Satisfaction", "Very Dissatisfied") },
         ];
 
+        // return cleaned data
         return { ethnicity, chronicConditions, satisfaction };
     });
 }
@@ -169,5 +173,6 @@ function processData(data) {
 function calculateProportion(rows, column, value) {
     const total = rows.length;
     const count = rows.filter(row => row[column] === value).length;
+    // proportion = count / total * 100
     return (count / total) * 100;
 }

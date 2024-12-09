@@ -1,3 +1,4 @@
+// define legend ocntainer
 const legendContainer = d3
     .select("#legend-container")
     .append("div")
@@ -8,21 +9,24 @@ const legendContainer = d3
     .style("align-items", "center")
     .style("margin-bottom", "20px");
 
-// chronic conditions legend
+// initialize chronic conditions legend
 const chronicLegend = legendContainer
     .append("div")
     .style("text-align", "center");
 
+// add legend title
 chronicLegend
     .append("h5")
     .text("Chronic Conditions")
     .style("margin-bottom", "10px");
 
+// prepare to add legend items
 const chronicLegendItems = chronicLegend
     .append("div")
     .style("display", "flex")
     .style("gap", "20px");
 
+// add legend items
 chronicLegendItems
     .selectAll(".chronic-item")
     .data(["Heart Disease", "Diabetes", "High Blood Pressure"])
@@ -32,6 +36,7 @@ chronicLegendItems
     .style("display", "flex")
     .style("flex-direction", "column")
     .style("align-items", "center")
+    // for each legend item, make div and set text
     .each(function (d) {
         const item = d3.select(this);
 
@@ -46,21 +51,24 @@ chronicLegendItems
             .text(d);
     });
 
-// medicare satisfaction levels legend
+// initialize medicare satisfaction levels legend
 const satisfactionLegend = legendContainer
     .append("div")
     .style("text-align", "center");
 
+// add legend title
 satisfactionLegend
     .append("h5")
     .text("Satisfaction Levels")
     .style("margin-bottom", "10px");
 
+// parepare to add legend items
 const satisfactionLegendItems = satisfactionLegend
     .append("div")
     .style("display", "flex")
     .style("gap", "20px");
 
+// add legend items
 satisfactionLegendItems
     .selectAll(".satisfaction-item")
     .data(["Very Satisfied", "Satisfied", "Dissatisfied", "Very Dissatisfied"])
@@ -70,6 +78,7 @@ satisfactionLegendItems
     .style("display", "flex")
     .style("flex-direction", "column")
     .style("align-items", "center")
+    // for each legend item, make div and set text
     .each(function (d) {
         const item = d3.select(this);
 
