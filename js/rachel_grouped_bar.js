@@ -278,7 +278,7 @@ class Rachel_Grouped_Bar {
 
             })
             .on('click', (event, d) => {
-                console.log(d.group)
+                // console.log(d.group)
 
                 this.filterDataForPercents(this.selected_category, d.group, d.subgroup)
 
